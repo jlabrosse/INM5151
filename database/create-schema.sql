@@ -28,7 +28,8 @@ CREATE TABLE cours (
   programme_id int references programmes(id),
   titre text,
   sigle text,
-  credit int
+  credit int,
+  prerequis text
 );
 
 CREATE TABLE groupe_cours (

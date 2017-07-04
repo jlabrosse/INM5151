@@ -18,51 +18,51 @@ INSERT INTO trimestres (saison, annee) VALUES (2, 2016);
 INSERT INTO trimestres (saison, annee) VALUES (3, 2016);
 INSERT INTO trimestres (saison, annee) VALUES (1, 2017);
 INSERT INTO trimestres (saison, annee) VALUES (2, 2017);
-INSERT INTO trimestres (saison, annee) VALUES (3, 2017)
+INSERT INTO trimestres (saison, annee) VALUES (3, 2017);
 INSERT INTO trimestres (saison, annee) VALUES (1, 2018);
 INSERT INTO trimestres (saison, annee) VALUES (2, 2018);
 INSERT INTO trimestres (saison, annee) VALUES (3, 2018);
 -- data cours
-INSERT INTO cours (programme_id, titre, sigle, credit)
-VALUES (1, 'Projet d''analyse et de modélisation', 'INM5151', 3);
-INSERT INTO cours (programme_id, titre, sigle, credit)
-VALUES (1, 'Informatique et société', 'INM6000', 3);
-INSERT INTO cours (programme_id, titre, sigle, credit)
-VALUES (1, 'Paradigmes des échanges internet', 'INF4375', 3);
-INSERT INTO cours (programme_id, titre, sigle, credit)
-VALUES (1, 'Génie logiciel: conception', 'INF5153', 3);
-INSERT INTO cours (programme_id, titre, sigle, credit)
-VALUES (1, 'Programmation I', 'INF1120', 3);
-INSERT INTO cours (programme_id, titre, sigle, credit)
-VALUES (1, 'Programmation II', 'INF2120', 3);
-INSERT INTO cours (programme_id, titre, sigle, credit)
-VALUES (2, 'Communication et groupes restreints', 'COM1090', 6);
-INSERT INTO cours (programme_id, titre, sigle, credit)
-VALUES (2, 'Approches de la communication interpersonnelle', 'COM1151', 3);
-INSERT INTO cours (programme_id, titre, sigle, credit)
-VALUES (2, 'Techniques d''entretien en psychosociologie', 'COM1433', 3);
-INSERT INTO cours (programme_id, titre, sigle, credit)
-VALUES (2, 'Communication et relations interethniques', 'COM2185', 2);
-INSERT INTO cours (programme_id, titre, sigle, credit)
-VALUES (2, 'Communication organisationnelle', 'COM3104', 3);
-INSERT INTO cours (programme_id, titre, sigle, credit)
-VALUES (3, 'Programmation I', 'INF1120', 3);
-INSERT INTO cours (programme_id, titre, sigle, credit)
-VALUES (3, 'Programmation II', 'INF2120', 3);
-INSERT INTO cours (programme_id, titre, sigle, credit)
-VALUES (3, 'Circuits logiques', 'MIC1065', 3);
-INSERT INTO cours (programme_id, titre, sigle, credit)
-VALUES (3, 'Analyse de circuits', 'MIC2111', 2);
-INSERT INTO cours (programme_id, titre, sigle, credit)
-VALUES (3, 'Systèmes embarqués', 'MIC5111', 3);
-INSERT INTO cours (programme_id, titre, sigle, credit)
-VALUES (4, 'Bioinformatique des structures', 'BIF7101', 3);
-INSERT INTO cours (programme_id, titre, sigle, credit)
-VALUES (4, 'Programmation parallèle haute performance', 'INF7345', 3);
-INSERT INTO cours (programme_id, titre, sigle, credit)
-VALUES (4, 'Performance et simulation des réseaux', 'INF7345', 3);
-INSERT INTO cours (programme_id, titre, sigle, credit)
-VALUES (4, 'Apprentissage automatique', 'INF7370', 3);
+INSERT INTO cours (programme_id, titre, sigle, credit, prerequis)
+VALUES (1, 'Projet d''analyse et de modélisation', 'INM5151', 3, 'INF1120');
+INSERT INTO cours (programme_id, titre, sigle, credit, prerequis)
+VALUES (1, 'Informatique et société', 'INM6000', 3, '');
+INSERT INTO cours (programme_id, titre, sigle, credit, prerequis)
+VALUES (1, 'Paradigmes des échanges internet', 'INF4375', 3, 'INF3180, INF2120');
+INSERT INTO cours (programme_id, titre, sigle, credit, prerequis)
+VALUES (1, 'Génie logiciel: conception', 'INF5153', 3, '');
+INSERT INTO cours (programme_id, titre, sigle, credit, prerequis)
+VALUES (1, 'Programmation I', 'INF1120', 3, '');
+INSERT INTO cours (programme_id, titre, sigle, credit, prerequis)
+VALUES (1, 'Programmation II', 'INF2120', 3, 'INF1120');
+INSERT INTO cours (programme_id, titre, sigle, credit, prerequis)
+VALUES (2, 'Communication et groupes restreints', 'COM1090', 6, '');
+INSERT INTO cours (programme_id, titre, sigle, credit, prerequis)
+VALUES (2, 'Approches de la communication interpersonnelle', 'COM1151', 3, 'COM3104');
+INSERT INTO cours (programme_id, titre, sigle, credit, prerequis)
+VALUES (2, 'Techniques d''entretien en psychosociologie', 'COM1433', 3, 'COM3104');
+INSERT INTO cours (programme_id, titre, sigle, credit, prerequis)
+VALUES (2, 'Communication et relations interethniques', 'COM2185', 2, '');
+INSERT INTO cours (programme_id, titre, sigle, credit, prerequis)
+VALUES (2, 'Communication organisationnelle', 'COM3104', 3, '');
+INSERT INTO cours (programme_id, titre, sigle, credit, prerequis)
+VALUES (3, 'Programmation I', 'INF1120', 3, '');
+INSERT INTO cours (programme_id, titre, sigle, credit, prerequis)
+VALUES (3, 'Programmation II', 'INF2120', 3, 'INF1120');
+INSERT INTO cours (programme_id, titre, sigle, credit, prerequis)
+VALUES (3, 'Circuits logiques', 'MIC1065', 3, '');
+INSERT INTO cours (programme_id, titre, sigle, credit, prerequis)
+VALUES (3, 'Analyse de circuits', 'MIC2111', 2, 'MIC1065');
+INSERT INTO cours (programme_id, titre, sigle, credit, prerequis)
+VALUES (3, 'Systèmes embarqués', 'MIC5111', 3, 'MIC1065, MIC5111');
+INSERT INTO cours (programme_id, titre, sigle, credit, prerequis)
+VALUES (4, 'Bioinformatique des structures', 'BIF7101', 3, '');
+INSERT INTO cours (programme_id, titre, sigle, credit, prerequis)
+VALUES (4, 'Programmation parallèle haute performance', 'INF7345', 3, 'INF4375');
+INSERT INTO cours (programme_id, titre, sigle, credit, prerequis)
+VALUES (4, 'Performance et simulation des réseaux', 'INF7345', 3, 'INF4375');
+INSERT INTO cours (programme_id, titre, sigle, credit, prerequis)
+VALUES (4, 'Apprentissage automatique', 'INF7370', 3, 'INF2120');
 -- data groupe_cours
 INSERT INTO groupe_cours (cours_id, trimestres_id, numero_groupe, periode_journee, professeur, atelier)
 VALUES (1, 1, 30, 1, 'Professeur Professorson', true);
