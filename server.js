@@ -4,7 +4,6 @@
 var express = require('express');
 var path = require('path');
 var bodyParser = require('body-parser');
-//var cors = require('cors');
 
 
 /////////////////////////////////////
@@ -23,7 +22,6 @@ portail.set('view engine', 'html');
 portail.use(express.static(path.join(__dirname, 'public')));
 portail.use(bodyParser.urlencoded({extended: false}));
 portail.use(bodyParser.json());
-//portail.use(cors({credentials: true, origin: true}));
 
 
 /////////////////////////////////////
