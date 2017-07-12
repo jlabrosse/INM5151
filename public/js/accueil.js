@@ -1,5 +1,6 @@
 // Menu Facture
 $('#facture').click(function(){  
+	/*
 	var data = {};
 	$.ajax({
 		url: 'facture',
@@ -8,7 +9,7 @@ $('#facture').click(function(){
 	}).then(function (response) {
 		if(response.statut == 'succes') {
 			$("#body-page").empty();
-			$("#body-page").append("<p style=\"text-align: center; color: white;\">" + response.contenu + "</p>")
+			$("#body-page").append("<p style=\"text-align: center; color: white;\">" + response.contenu + "</p>");
 		}
 		else {
 			alert('Erreur');
@@ -16,6 +17,9 @@ $('#facture').click(function(){
 	}).catch(function (err) {
 		console.error(err);
 	});
+	*/
+	$("#body-page").append("<p style=\"text-align: center; color: white;\">Test AJAX call</p>");
+	$("#body-page").append("<p style=\"text-align: center; color: white;\">Fonctionne!!!</p>");
 });  
 
 // Menu Horaire

@@ -6,11 +6,13 @@ var path = require('path');
 var bodyParser = require('body-parser');
 var cors = require('cors');
 
+
 /////////////////////////////////////
 // Représente l'application
 /////////////////////////////////////
 var portail = express();
 portail.set('port', (process.env.PORT || 8080));
+
 
 /////////////////////////////////////
 // Settings
