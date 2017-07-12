@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Page d'accueil</title>
+    <link rel="stylesheet" href="css/accueil.css">
+</head>
+
+<body>
+	<!-- Header -->
+	<div id="header" class="header">
+		<h1 style="margin:auto; line-height:51px; vertical-align:middle; text-align: center; color: white;">Portail &eacute;tudiant</h1>
+	</div>
+
+	<!-- Contenu de la page -->
+	<div id="body-page" class="body-page">  
+		<p style="margin:auto; line-height:51px; vertical-align:middle; text-align: center; color: white;" id="affichage">Bienvenue sur votre portail &eacute;tudiant</p>
+	</div>
+	
+	<!-- Footer -->
+	<div id="footer" class="footer">
+		<h1 style="text-align: center; color: white;">INM5151</h1>
+	</div>
+
+	<!-- Barre de navigation -->
+	<div id="mySidenav" class="sidenav">
+		<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+		<ul>
+			<a href="accueil">Accueil</a> 
+			<a id="relevedenotes" href="#">Relev&eacute; de notes</a>
+			<li><a href="#">Modification</a>
+				<ul class="sub-menu">
+					<a id="inscription" href="#">Inscription</a>
+					<a id="desinscription" href="#">D&eacute;sinscription</a>
+				</ul>
+			</li>
+			<a id="horaire" href="#">Horaire</a>
+			<a id="facture" href="#">Facture</a>
+		</ul>
+	</div>
+	<span style="font-size:30px;cursor:pointer" class="menu" onclick="openNav()">&#9776; Menu</span>
+	
+	<!-- Scripts -->
+	<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+	<script src="js/accueil.js"></script>	
+</body>
+</html>
