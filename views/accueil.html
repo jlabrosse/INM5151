@@ -43,28 +43,6 @@
 	<!-- Scripts -->
 	<!--<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>-->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-	<script>
-		$(document).ready(function  () {
-			$('#facture').click(function(){  
-				var data = {};
-				$.ajax({
-					url: 'facture',
-					data: data,
-					method: 'POST'
-				}).then(function (response) {
-					if(response.statut == 'succes') {
-						$("#body-page").empty();
-						$("#body-page").append("<p style=\"text-align: center; color: white;\">" + response.contenu + "</p>");
-					}
-					else {
-						alert('Erreur');
-					}
-				}).catch(function (err) {
-					console.error(err);
-				});
-			});  
-		});
- 	</script>
 	<script src="js/accueil.js"></script>	
 </body>
 </html>
