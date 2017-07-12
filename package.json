@@ -1,0 +1,27 @@
+{
+  "name": "INM5151",
+  "version": "0.0.1",
+  "description": "Ceci est un README",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jlabrosse/INM5151.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jlabrosse/INM5151/issues"
+  },
+  "homepage": "https://github.com/jlabrosse/INM5151#readme",
+  "dependencies": {
+    "events": "^1.1.1",
+    "express": "^4.14.1",
+    "fs": "0.0.1-security",
+    "node-cron": "^1.1.3",
+    "readline": "^1.3.0",
+    "winston": "^2.3.1"
+  }
+}
