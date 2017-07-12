@@ -1,7 +1,7 @@
 var express = require('express');
 var server = express();
 
-server.set('port', 8080);
+server.set('port', (process.env.PORT || 8080));
 
 //probably useless example function
 function reponsehttp(res, body) {
