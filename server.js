@@ -1,7 +1,7 @@
 var express = require('express');
 var server = express();
 
-server.set('port', (process.env.PORT || 8080));
+server.set('port', 8080);
 server.use(express.static(__dirname + '/views/html'));
 
 server.get('/', function(req, res, cb){
