@@ -1,5 +1,5 @@
 /////////////////////////////////////
-// Import des librairies nécessaires
+// Import des librairies nÃ©cessaires
 /////////////////////////////////////
 var express = require('express');
 var path = require('path');
@@ -7,15 +7,15 @@ var bodyParser = require('body-parser');
 
 
 /////////////////////////////////////
-// Représente l'application
+// ReprÃ©sente l'application
 /////////////////////////////////////
 var portail = express();
-
+portail.set('port', (process.env.PORT || 8080));
 
 /////////////////////////////////////
 // Settings
 /////////////////////////////////////
-portail.engine('.html', require('ejs').__express); // Pas sûr de cette ligne
+portail.engine('.html', require('ejs').__express); // Pas sÃ»r de cette ligne
 portail.set('views', __dirname + '/views');
 portail.set('view engine', 'html');
 portail.use(express.static(path.join(__dirname, 'public')));
@@ -81,13 +81,13 @@ portail.post('/connexion', function(req, res) {
     console.log("Code permanent: %s", code);
     console.log("NIP:            %s", nip);
     
-	// TODO: déplacer la validation dans un autre module	
+	// TODO: dÃ©placer la validation dans un autre module	
     // Si champs valides, retourne le statut (succes) et l'url de redirection
 	if(code == 'admin' && nip == 'admin')
 	{
 		res.json({statut: "succes", redirection: 'accueil'});
 	}
-    // Sinon, retourne le statut (erreur) et un message d'erreur à afficher 
+    // Sinon, retourne le statut (erreur) et un message d'erreur Ã  afficher 
     else
 	{
 		res.json({statut: "erreur", message: 'Informations erron&eacute;es!'});
@@ -116,33 +116,33 @@ portail.post('/inscription', function(req, res) {
 });
 
 
-// Gestion POST désinscription page d'accueil
+// Gestion POST dÃ©sinscription page d'accueil
 portail.post('/desinscription', function(req, res) {
 
-	res.json({statut: "succes", contenu: 'Désinscription'});
+	res.json({statut: "succes", contenu: 'DÃ©sinscription'});
 });
 
 
-// Gestion POST relevé de notes page d'accueil
+// Gestion POST relevÃ© de notes page d'accueil
 portail.post('/relevedenotes', function(req, res) 
 {	
 	// TODO : Interroger la bd
-	// Exemple de données récupérées de la bd
+	// Exemple de donnÃ©es rÃ©cupÃ©rÃ©es de la bd
 	var items = [
     {code: 'INF1120', name: 'Programmation I', description: 'A+'}, 
-    {code: 'INF1130', name: 'Mathématiques pour informaticien', description: 'A'}, 
-    {code: 'INF4375', name: 'Paradigmes des échanges Internet', description: 'A-'}, 
-    {code: 'INM5151', name: 'Projet d\'analyse et de modélisation', description: 'B+'}, 
+    {code: 'INF1130', name: 'MathÃ©matiques pour informaticien', description: 'A'}, 
+    {code: 'INF4375', name: 'Paradigmes des Ã©changes Internet', description: 'A-'}, 
+    {code: 'INM5151', name: 'Projet d\'analyse et de modÃ©lisation', description: 'B+'}, 
     {code: 'INF2120', name: 'Programmation II', description: 'B'}, 
 	];
 
-	// TODO : Vérifier l'existence de données
-	//        Si aucune donnée, retourner un statut erreur et un message à afficher
+	// TODO : VÃ©rifier l'existence de donnÃ©es
+	//        Si aucune donnÃ©e, retourner un statut erreur et un message Ã  afficher
 	//		  res.json({statut: "erreur", contenu: 'Vous n'avez aucune note de disponible'});
 	// Construction du tableau html correspondant
 	
 	// TODO : extraire la fonction dans un autre module
-	// TODO : gérer les caractères accentués
+	// TODO : gÃ©rer les caractÃ¨res accentuÃ©s
 	var resultat = '';
 	resultat += '<table class=\"notes\">';
 	resultat += '<col width="75"><col width="200"><col width="75">';
@@ -159,13 +159,15 @@ portail.post('/relevedenotes', function(req, res)
 	}
 	resultat += '</table>';
 	 
-	// Retourne le tableau html généré avec les données de la bd
+	// Retourne le tableau html gÃ©nÃ©rÃ© avec les donnÃ©es de la bd
 	res.set({ 'content-type': 'application/json; charset=utf-8' });
 	res.json({statut: "succes", contenu: resultat});
 });
 
 
 //////////////////////////////////////////////////////////
-// Démarrage de l'application
+// DÃ©marrage de l'application
 //////////////////////////////////////////////////////////
-portail.listen(8080);
+portail.listen(portail.get('port'), function(){
+    console.log("server is listening on: %s", portail.get('port'));
+});
