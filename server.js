@@ -4,7 +4,7 @@
 var express = require('express');
 var path = require('path');
 var bodyParser = require('body-parser');
-var cors = require('cors');
+//var cors = require('cors');
 
 
 /////////////////////////////////////
@@ -23,7 +23,7 @@ portail.set('view engine', 'html');
 portail.use(express.static(path.join(__dirname, 'public')));
 portail.use(bodyParser.urlencoded({extended: false}));
 portail.use(bodyParser.json());
-portail.use(cors({credentials: true, origin: true}));
+//portail.use(cors({credentials: true, origin: true}));
 
 
 /////////////////////////////////////
@@ -145,7 +145,6 @@ portail.post('/relevedenotes', function(req, res)
     // Construction du tableau html correspondant
     
     // TODO : extraire la fonction dans un autre module
-    // TODO : gérer les caractères accentués
     var resultat = '';
     resultat += '<table class=\"notes\">';
     resultat += '<col width="75"><col width="200"><col width="75">';
