@@ -1,0 +1,109 @@
+{
+  "etudiant": {
+    "prenom": "John",
+    "nom": "Johnson",
+    "codePermanent": "DUPA10029407",
+    "programme": {
+      "codeProgramme": 7316,
+      "titre": "Baccalaureat en informatique et genie logiciel",
+      "totalCredit": 90,
+      "coursTermines": [
+        {
+          "titre": "Mathematiques pour informaticien",
+          "sigle": "INF1130",
+          "credit": 3,
+          "resultat": "A",
+          "frais": 327.35
+        },
+        {
+          "titre": "Programmation I",
+          "sigle": "INF1120",
+          "credit": 3,
+          "resultat": "A-",
+          "frais": 213.22
+        },
+        {
+          "titre": "Algebre matricielle",
+          "sigle": "MAT1600",
+          "credit": 3,
+          "resultat": "B",
+          "frais": 333.33
+        },
+        {
+          "titre": "La gestion et les systemes d'information",
+          "sigle": "MET1105",
+          "credit": 3,
+          "resultat": "A-",
+          "frais": 444.25
+        },
+        {
+          "titre": "Economie des technologies de l'information",
+          "sigle": "ECO1081",
+          "credit": 3,
+          "resultat": "A+",
+          "frais": 278.41
+        }
+      ],
+      "sessionEnCours": [
+        {
+          "titre": "Organisation des ordinateurs et assembleur",
+          "sigle": "INF2170",
+          "credit": 3,
+          "resultat": "",
+          "frais": 301.42
+        },
+        {
+          "titre": "Programmation II",
+          "sigle": "INF2120",
+          "credit": 3,
+          "resultat": "",
+          "frais": 278.41
+        },
+        {
+          "titre": "Statistiques pour les sciences",
+          "sigle": "MAT4681",
+          "credit": 3,
+          "resultat": "",
+          "frais": 389.12
+        },
+        {
+          "titre": "Comportement organisationnel",
+          "sigle": "ORH1163",
+          "credit": 3,
+          "resultat": "",
+          "frais": 298.54
+        }
+      ],
+      "coursACompletes": [
+        {
+          "titre": "Teleinformatique",
+          "sigle": "INF3270",
+          "credit": 3,
+          "resultat": "",
+          "frais": 309.65
+        },
+        {
+          "titre": "Modelisation et specification formelles de logiciels",
+          "sigle": "INF3143",
+          "credit": 3,
+          "resultat": "",
+          "frais": 310.08
+        },
+        {
+          "titre": "Fichiers et bases de données",
+          "sigle": "INF3180",
+          "credit": 3,
+          "resultat": "",
+          "frais": 265.87
+        },
+        {
+          "titre": "Construction et maintenance de logiciels",
+          "sigle": "INF3135",
+          "credit": 3,
+          "resultat": "",
+          "frais": 187.11
+        }
+      ]
+    }
+  }
+}
