@@ -2,7 +2,7 @@
 <html>
 <head>
 	<title>INM5151 - Portail étudiant - Page de connexion</title>
-	<link rel="stylesheet" href="css/style.css" type="text/css" media="screen" title="no title" charset="utf-8">
+	<link rel="stylesheet" href="css/connexion.css" type="text/css" media="screen" title="no title" charset="utf-8">
 </head>
 <body>
 	<!-- Formulaire de connexion -->
@@ -29,6 +29,8 @@
 	<!-- Requête AJAX pour vérifier les informations de connexion -->
 	<script>
 		$(document).ready(function  () {
+			var erreur = $("#erreur");
+			erreur.hide();
 			$("#formulaire").on("submit",function  (e) {
 				e.preventDefault();
 				var data = {
@@ -46,7 +48,8 @@
 					}
 					// Sinon, affichage d'un message d'erreur
 					else {
-						$('#erreur').html(response.message);
+						erreur.html(response.message);
+						erreur.show();
 					}
 				}).catch(function (err) {
 					console.error(err);
