@@ -1,4 +1,4 @@
-/////////////////////////////////////
+ /////////////////////////////////////
 // Import des librairies nécessaires
 /////////////////////////////////////
 var express = require('express');
@@ -66,6 +66,12 @@ portail.get('/horaire', function(req, res)
 {
     // Affiche la page horaire.html
     res.render('horaire');
+});
+
+portail.get('/cheminement', function(req, res)
+{
+    // Affiche la page cheminement.html
+    res.render('cheminement');
 });
 
 
@@ -163,6 +169,90 @@ portail.post('/relevedenotes', function(req, res)
     res.set({ 'content-type': 'application/json; charset=utf-8' });
     res.json({statut: "succes", contenu: resultat});
 });
+
+
+// Gestion POST cheminement page d'accueil
+portail.post('/cheminement', function(req, res) {
+
+  var cours = [
+    {code: 'INF1120', name: 'Programmation I', statut:'complet', prealable:'none'}, 
+    {code: 'INF1130', name: 'Mathématiques pour informaticien', statut:'complet', prealable:'none'}, 
+    {code: 'MAT1600', name: 'Algèbre matricielle', statut:'complet', prealable:'none'}, 
+    {code: 'MET1105', name: 'Gestion des système d\'information', statut:'complet', prealable:'none'}, 
+    {code: 'ECO1081', name: 'Économie des technologies de l\'information', statut:'complet', prealable:'none'}, 
+    {code: 'INF2120', name: 'Programmation II', statut:'complet', prealable:'INF1120'},
+    {code: 'INF2170', name: 'Assembleur', statut:'complet', prealable:'INF1120'}, 
+    {code: 'MAT4681', name: 'Statistique pour les sciences', statut:'complet', prealable:'none'}, 
+    {code: 'ORH1163', name: 'Comportement organisationnel', statut:'complet', prealable:'none'}, 
+    {code: 'Langue', name: 'Cours de langue', statut:'enCours', prealable:'none'}, 
+    {code: 'INF3270', name: 'Téléinformatique', statut:'enCours', prealable:'INF2120 INF2170'}, 
+    {code: 'INF3143', name: 'Modélisation et spécification formelles de logiciels', statut:'enCours', prealable:'INF1130'}, 
+    {code: 'INF3180', name: 'Fichiers et bases de données', statut:'enCours', prealable:'INF2120'}, 
+    {code: 'INF3135', name: 'Construction et maintenance de logiciels', statut:'aFaire', prealable:'INF2120'}, 
+    {code: 'INF3172', name: 'Principes des système d\'exploitation', statut:'aFaire', prealable:'INF3172'}, 
+    {code: 'INF3105', name: 'Structure de données et algorithmes', statut:'aFaire', prealable:'INF1130 INF2120'}, 
+    {code: 'INF5151', name: 'Génie logiciel: analyse et modélisation', statut:'aFaire', prealable:'none'}, 
+    {code: 'Compl.', name: 'Cours complémentaire', statut:'aFaire', prealable:'none'}, 
+    {code: 'INF2160', name: 'Paradigmes de programmation', statut:'aFaire', prealable:'INF1130'}, 
+    {code: 'INF5153', name: 'Génie logiciel: conception', statut:'aFaire', prealable:'INF5151'}, 
+    {code: 'INM5151', name: 'Projet d\'analyse et de modélisation', statut:'aFaire', prealable:'INF5151'}, 
+    {code: 'Choix1', name: 'Cours au choix', statut:'aFaire', prealable:'Choix1'}, 
+    {code: 'INF4375', name: 'Paradigmes des échanges Internet', statut:'aFaire', prealable:'INF2120'}, 
+    {code: 'INF6150', name: 'Génie logiciel: conduite de projets informatiques', statut:'aFaire', prealable:'INF5153'}, 
+    {code: 'INF5180', name: 'Conception et exploitation d\'une base de données', statut:'aFaire', prealable:'INF3180'}, 
+    {code: 'Choix2', name: 'Cours au choix', statut:'aFaire', prealable:'Choix2'}, 
+    {code: 'INF4170', name: 'Architecture des ordinateurs', statut:'aFaire', prealable:'INF3172'}, 
+    {code: 'INM6000', name: 'Informatique et société', statut:'aFaire', prealable:'none'}, 
+    {code: 'Choix3', name: 'Cours au choix', statut:'aFaire', prealable:'Choix3'}, 
+    {code: 'Choix4', name: 'Cours au choix', statut:'aFaire', prealable:'Choix4'}, 
+    ];
+
+    var listChoix = '<option>Choix</option>' +
+                    '<option>INF2015</option>' +
+                    '<option>INF4100</option>' +
+                    '<option>INF5000</option>' +
+                    '<option>INF5071</option>' +
+                    '<option>INF5171</option>';
+
+    var resultat = '<table class=\"cheminement\">';
+    resultat += '<col width="100"><col width="100"><col width="100"><col width="100"><col width="100">';
+
+    var i;
+    var j = 0;
+    var newLine = 5;
+    resultat += '<tr>';
+    for(i in cours)
+    {
+        if( j > 5 && newLine === 5) {
+            j = 0;
+            newLine = 4;
+        }
+        if( j > 0 && !(j % newLine) ) {
+            resultat += '</tr>';
+            resultat += '<tr>';
+        } 
+        resultat += '<td id=\"' + cours[i].code + '\"' 
+                    + ' style=\"cursor:pointer\"' 
+                    + ' class=\"cheminementCell ' + cours[i].statut + '\"' 
+                    + ' data-prealable=\"' + cours[i].prealable + '\">' 
+                    + '<a href=\"#\">'
+                    + cours[i].code + '</br>'  
+                    + cours[i].name + '</a>';
+        if( cours[i].code.match(/Choix./)) {
+            resultat += '<select id=\"coursAu' + cours[i].code + '\">' + listChoix + '</select>';
+        }
+        resultat += '</td>';
+        ++j;
+
+    }
+    resultat += '</tr></table>';
+    
+     
+    // Retourne le tableau html généré avec les données de la bd
+    res.set({ 'content-type': 'application/json; charset=utf-8' });
+    res.json({statut: "succes", contenu: resultat});
+});
+
 
 
 //////////////////////////////////////////////////////////

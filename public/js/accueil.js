@@ -122,6 +122,84 @@ $('#relevedenotes').click(function(){
 	});
 });   
    
+
+// Menu cheminement
+$('#cheminement').click(function(){  
+	var data = {};
+	$.ajax({
+		url: 'cheminement',
+		data: data,
+		method: 'POST'
+	}).then(function (response) {
+		if(response.statut == 'succes') {
+			$("#body-page").empty();
+			$("#body-page").append($("<p style=\"text-align: center; color: white;\">").text(' '));
+			$("#body-page").append(response.contenu);
+		}
+		else {
+			alert('Erreur');
+		}
+	}).catch(function (err) {
+		console.error(err);
+	});
+});   
+
+$(document).on("click", ".cheminementCell a", function() {
+	var cells = document.getElementsByClassName("cheminementCell");
+	for( var i = 0; i < cells.length; i++ ) {
+		cells[i].style.opacity = .3;
+	}
+	var cell = $(this).parent();
+	cell.css('opacity', 1);
+
+	var prealables = cell.attr("data-prealable").split(' ');
+	if( prealables[0].match(/Choix./)) {
+		var e = document.getElementById("coursAu" + cell.attr("id"));
+		var choix = e.options[e.selectedIndex].value;
+		prealables = findPrealableForOption(choix).split(' ');
+		console.log("prealable " + prealables);
+	}
+	for( var i = 0; i < prealables.length; ++i ) {
+		console.log(prealables[i]);
+		dimPrealablesCell( document.getElementById(prealables[i]) );
+	}
+	return false;//avoid propagation
+
+});
+
+function dimPrealablesCell( cell ) {
+	var prealables = cell.getAttribute("data-prealable").split(' ');
+	for( var i = 0; i < prealables.length; ++i ) {
+		if( prealables[i] !== "none") {
+			console.log("recursive call " + (prealables[i])); 
+			console.log("recursive call " + document.getElementById(prealables[i])); 
+
+			dimPrealablesCell( document.getElementById(prealables[i]));
+		}
+	}
+	cell.style.opacity = .7;
+}
+
+function findPrealableForOption( optionId ) {
+	console.log("id : " + optionId);
+	switch( optionId ) {
+		case "INF2015" : return "INF1120";
+		case "INF4100" : return "INF3105";
+		case "INF5000" : return "INF3105";
+		case "INF5071" : return "INF3105 MAT1600";
+		case "INF5171" : return "INF3172";
+		default : return "none";
+	}
+}
+
+$(document).on("click", "#body-page", function() {
+	var cells = document.getElementsByClassName("cheminementCell");
+	for( var i = 0; i < cells.length; i++ ) {
+		cells[i].style.opacity = 1;
+	}
+
+});
+
 // Barre de menu
 $('.message a').click(function(){
    $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
