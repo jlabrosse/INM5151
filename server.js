@@ -22,7 +22,7 @@ var database = JSON.parse(fs.readFileSync('./database/database.json'));
 var databaseCours = JSON.parse(fs.readFileSync('./database/databaseCours.json'));
 var formateurHandler = require("./formateur/formateurHandler.js");
 
-
+  
 /////////////////////////////////////
 // Settings
 /////////////////////////////////////
