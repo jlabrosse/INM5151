@@ -9,7 +9,7 @@
       "totalCredit": 90,
       "coursTermines": [
         {
-          "titre": "Mathematiques pour informaticien",
+          "titre": "Mathématiques pour informaticien",
           "sigle": "INF1130",
           "credit": 3,
           "resultat": "A",
@@ -23,14 +23,14 @@
           "frais": 213.22
         },
         {
-          "titre": "Algebre matricielle",
+          "titre": "Algèbre matricielle",
           "sigle": "MAT1600",
           "credit": 3,
           "resultat": "B",
           "frais": 333.33
         },
         {
-          "titre": "La gestion et les systemes d'information",
+          "titre": "La gestion et les systèmes d'information",
           "sigle": "MET1105",
           "credit": 3,
           "resultat": "A-",
