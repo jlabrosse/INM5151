@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css?family=Cabin|Cinzel+Decorative|Roboto');
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	background-color: #fcfcfa;
+}
+
+.header {
+	margin: 0 auto;
+	text-align: center;
+    height: 120px;
+    width: 100%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+	font-family: 'Cinzel Decorative', cursive;
+    background-color: #1a405f;
+	color: #fcfcfa;
+}
+
+.header h1 {
+	padding-top: 20px;
+}
+
+.body-page {
+	overflow-y: auto;
+	text-align: left; 
+	height: 80%;
+    width: 100%;
+    position: fixed;
+    z-index: 1;
+    top: 120px;
+    left: 300px;
+    background-color: #fcfcfa;
+}
+
+.footer {
+	text-align: center; 
+    height: 40px;
+    width: 100%;
+    position: fixed;
+    z-index: 1;
+    bottom: 0;
+    left: 0;
+    background-color: #1a405f;
+	color: #fcfcfa;
+}
+
+.footer h4 {
+	margin-top: 10px;
+}
+
+.sub-menu { 
+	display: none;
+	margin: 5%; padding: 0;
+}
+
+ul{
+	list-style: none;
+	margin: 0%; padding: 0;
+}
+
+li {
+ list-style: none;
+ margin: 0; padding: 0;
+}
+
+.menu {
+    position: fixed;
+    z-index: 1;
+    top: 120px;
+    left: 0;
+	color: #1a405f;
+	font-family: 'Cabin', sans-serif;
+	font-size: 20px;
+}
+
+.sidenav {
+    height: 475px;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 120px;
+    left: 0;
+    background-color: #337bae;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 20px;
+    color: #1a405f;
+	font-family: 'Cabin', sans-serif;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidenav a:hover, .offcanvas a:focus{
+    color: #fcfcfa;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
