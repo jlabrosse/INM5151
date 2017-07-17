@@ -20,6 +20,8 @@ portail.set('port', (process.env.PORT || 8080));
 portail.engine('.html', require('ejs').__express); // Pas sûr de cette ligne
 portail.set('view engine', 'html');
 portail.set('views', __dirname + '/views');
+portail.set('database', __dirname + '/database');
+portail.set('formateur', __dirname + '/formateur');
 portail.use(express.static(path.join(__dirname, 'public')));
 portail.use(bodyParser.urlencoded({extended: false}));
 portail.use(bodyParser.json());
@@ -28,10 +30,10 @@ portail.use(bodyParser.json());
 /////////////////////////////////////
 // Bases de données
 /////////////////////////////////////
-var databaseHandler = require(__dirname + '/database/databaseHandler.js'); 
-var database = JSON.parse(fs.readFileSync(__dirname + '/database/database.json'));
-var databaseCours = JSON.parse(fs.readFileSync(__dirname + '/database/databaseCours.json'));
-var formateurHandler = require(__dirname + "/formateur/formateurHandler.js");
+var databaseHandler = require(portail.get('database') + '/databaseHandler.js'); 
+var database = JSON.parse(fs.readFileSync(portail.get('database') + '/database.json'));
+var databaseCours = JSON.parse(fs.readFileSync(portail.get('database') + '/databaseCours.json'));
+var formateurHandler = require(portail.get('formateur') + '/formateurHandler.js');
 
 
 /////////////////////////////////////
