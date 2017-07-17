@@ -30,7 +30,7 @@ portail.use(bodyParser.json());
 /////////////////////////////////////
 // Bases de données
 /////////////////////////////////////
-var databaseHandler = require(portail.get('database') + '/databaseHandler.js'); 
+var databaseHandler = require(portail.get('database') + '/dataBaseHandler.js'); 
 var database = JSON.parse(fs.readFileSync(portail.get('database') + '/database.json'));
 var databaseCours = JSON.parse(fs.readFileSync(portail.get('database') + '/databaseCours.json'));
 var formateurHandler = require(portail.get('formateur') + '/formateurHandler.js');
