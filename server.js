@@ -13,25 +13,25 @@ var fs = require('fs');
 var portail = express();
 portail.set('port', (process.env.PORT || 8080));
 
-
-/////////////////////////////////////
-// Bases de données
-/////////////////////////////////////
-var databaseHandler = require("./database/databaseHandler.js"); 
-var database = JSON.parse(fs.readFileSync('./database/database.json'));
-var databaseCours = JSON.parse(fs.readFileSync('./database/databaseCours.json'));
-var formateurHandler = require("./formateur/formateurHandler.js");
-
   
 /////////////////////////////////////
 // Settings
 /////////////////////////////////////
 portail.engine('.html', require('ejs').__express); // Pas sûr de cette ligne
-portail.set('views', __dirname + '/views');
 portail.set('view engine', 'html');
+portail.set('views', __dirname + '/views');
 portail.use(express.static(path.join(__dirname, 'public')));
 portail.use(bodyParser.urlencoded({extended: false}));
 portail.use(bodyParser.json());
+
+
+/////////////////////////////////////
+// Bases de données
+/////////////////////////////////////
+var databaseHandler = require(__dirname + '/database/databaseHandler.js'); 
+var database = JSON.parse(fs.readFileSync(__dirname + '/database/database.json'));
+var databaseCours = JSON.parse(fs.readFileSync(__dirname + '/database/databaseCours.json'));
+var formateurHandler = require(__dirname + "/formateur/formateurHandler.js");
 
 
 /////////////////////////////////////
@@ -172,6 +172,4 @@ portail.post('/cheminement', function(req, res) {
 //////////////////////////////////////////////////////////
 portail.listen(portail.get('port'), function(){
     console.log("server is listening on: %s", portail.get('port'));
-	
-	databaseHandler.afficherDB(database);
 });
