@@ -9,70 +9,214 @@
             "totalCredit": 90,
             "coursTermines": [
                 {
-                    "titre": "Mathématiques pour informaticien",
-                    "sigle": "INF1130",
-                    "credit": 3,
+                    "code": "INF1120",
+                    "name": "Programmation I",
+                    "statut": "complet",
+                    "prealable": "none",
+                    "local": "PK-R650",
+                    "periode": 1,
+                    "professeur": "Jacques Berger",
+                    "groupe": 30,
+                    "frais": 300.00,
                     "resultat": "A",
-                    "frais": 327.35
+                    "nbrPlaceLibres": 30,
+                    "labo": {
+                        "demonstrateur": "François Chamberland",
+                        "periode": 1,
+                        "groupe": 1
+                    }
                 },
                 {
-                    "titre": "Programmation I",
-                    "sigle": "INF1120",
-                    "credit": 3,
-                    "resultat": "A-",
-                    "frais": 213.22
+                    "code": "INF1130",
+                    "name": "Mathématiques pour informaticien",
+                    "statut": "complet",
+                    "prealable": "none",
+                    "local": "PK-R650",
+                    "periode": 1,
+                    "professeur": "Jacques Berger",
+                    "groupe": 30,
+                    "frais": 300.00,
+                    "resultat": "A",
+                    "nbrPlaceLibres": 30,
+                    "labo": null
                 },
                 {
-                    "titre": "Algèbre matricielle",
-                    "sigle": "MAT1600",
-                    "credit": 3,
-                    "resultat": "B",
-                    "frais": 333.33
+                    "code": "MAT1600",
+                    "name": "Algèbre matricielle",
+                    "statut": "complet",
+                    "prealable": "none",
+                    "local": "PK-R650",
+                    "periode": 1,
+                    "professeur": "Jacques Berger",
+                    "groupe": 30,
+                    "frais": 300.00,
+                    "resultat": "A",
+                    "nbrPlaceLibres": 30,
+                    "labo": null
                 },
                 {
-                    "titre": "La gestion et les systèmes d'information",
-                    "sigle": "MET1105",
-                    "credit": 3,
-                    "resultat": "A-",
-                    "frais": 444.25
+                    "code": "MET1105",
+                    "name": "Gestion des système d\"information",
+                    "statut": "complet",
+                    "prealable": "none",
+                    "local": "PK-R650",
+                    "periode": 1,
+                    "professeur": "Jacques Berger",
+                    "groupe": 30,
+                    "frais": 300.00,
+                    "resultat": "A",
+                    "nbrPlaceLibres": 30,
+                    "labo": null
                 },
                 {
-                    "titre": "Economie des technologies de l'information",
-                    "sigle": "ECO1081",
-                    "credit": 3,
-                    "resultat": "A+",
-                    "frais": 278.41
+                    "code": "ECO1081",
+                    "name": "Économie des technologies de l\"information",
+                    "statut": "complet",
+                    "prealable": "none",
+                    "local": "PK-R650",
+                    "periode": 1,
+                    "professeur": "Jacques Berger",
+                    "groupe": 30,
+                    "frais": 300.00,
+                    "resultat": "A",
+                    "nbrPlaceLibres": 30,
+                    "labo": null
+                },
+                {
+                    "code": "INF2120",
+                    "name": "Programmation II",
+                    "statut": "complet",
+                    "prealable": "INF1120",
+                    "local": "PK-R650",
+                    "periode": 1,
+                    "professeur": "Jacques Berger",
+                    "groupe": 30,
+                    "frais": 300.00,
+                    "resultat": "A",
+                    "nbrPlaceLibres": 30,
+                    "labo": {
+                        "demonstrateur": "François Chamberland",
+                        "periode": 1,
+                        "groupe": 1
+                    }
+                },
+                {
+                    "code": "INF2170",
+                    "name": "Assembleur",
+                    "statut": "complet",
+                    "prealable": "INF1120",
+                    "local": "PK-R650",
+                    "periode": 1,
+                    "professeur": "Jacques Berger",
+                    "groupe": 30,
+                    "frais": 300.00,
+                    "resultat": "A",
+                    "nbrPlaceLibres": 30,
+                    "labo": {
+                        "demonstrateur": "François Chamberland",
+                        "periode": 1,
+                        "groupe": 1
+                    }
+                },
+                {
+                    "code": "MAT4681",
+                    "name": "Statistique pour les sciences",
+                    "statut": "complet",
+                    "prealable": "none",
+                    "local": "PK-R650",
+                    "periode": 1,
+                    "professeur": "Jacques Berger",
+                    "groupe": 30,
+                    "frais": 300.00,
+                    "resultat": "A",
+                    "nbrPlaceLibres": 30,
+                    "labo": null
+                },
+                {
+                    "code": "ORH1163",
+                    "name": "Comportement organisationnel",
+                    "statut": "complet",
+                    "prealable": "none",
+                    "local": "PK-R650",
+                    "periode": 1,
+                    "professeur": "Jacques Berger",
+                    "groupe": 30,
+                    "frais": 300.00,
+                    "resultat": "A",
+                    "nbrPlaceLibres": 30,
+                    "labo": null
                 }
             ],
             "sessionEnCours": [
                 {
-                    "titre": "Organisation des ordinateurs et assembleur",
-                    "sigle": "INF2170",
-                    "credit": 3,
-                    "resultat": "",
-                    "frais": 301.42
+                    "code": "Langue",
+                    "name": "Cours de langue",
+                    "statut": "enCours",
+                    "prealable": "none",
+                    "local": "PK-R650",
+                    "periode": 1,
+                    "professeur": "Jacques Berger",
+                    "groupe": 30,
+                    "frais": 300.00,
+                    "resultat": "A",
+                    "nbrPlaceLibres": 30,
+                    "labo": null
                 },
                 {
-                    "titre": "Programmation II",
-                    "sigle": "INF2120",
-                    "credit": 3,
-                    "resultat": "",
-                    "frais": 278.41
+                    "code": "INF3270",
+                    "name": "Téléinformatique",
+                    "statut": "enCours",
+                    "prealable": "INF2120 INF2170",
+                    "local": "PK-R650",
+                    "periode": 1,
+                    "professeur": "Jacques Berger",
+                    "groupe": 30,
+                    "frais": 300.00,
+                    "resultat": "A",
+                    "nbrPlaceLibres": 30,
+                    "labo": {
+                        "demonstrateur": "François Chamberland",
+                        "periode": 1,
+                        "groupe": 1
+                    }
                 },
                 {
-                    "titre": "Statistiques pour les sciences",
-                    "sigle": "MAT4681",
-                    "credit": 3,
-                    "resultat": "",
-                    "frais": 389.12
+                    "code": "INF3143",
+                    "name": "Modélisation et spécification formelles de logiciels",
+                    "statut": "enCours",
+                    "prealable": "INF1130",
+                    "local": "PK-R650",
+                    "periode": 1,
+                    "professeur": "Jacques Berger",
+                    "groupe": 30,
+                    "frais": 300.00,
+                    "resultat": "A",
+                    "nbrPlaceLibres": 30,
+                    "labo": {
+                        "demonstrateur": "François Chamberland",
+                        "periode": 1,
+                        "groupe": 1
+                    }
                 },
                 {
-                    "titre": "Comportement organisationnel",
-                    "sigle": "ORH1163",
-                    "credit": 3,
-                    "resultat": "",
-                    "frais": 298.54
+                    "code": "INF3180",
+                    "name": "Fichiers et bases de données",
+                    "statut": "enCours",
+                    "prealable": "INF2120",
+                    "local": "PK-R650",
+                    "periode": 1,
+                    "professeur": "Jacques Berger",
+                    "groupe": 30,
+                    "frais": 300.00,
+                    "resultat": "A",
+                    "nbrPlaceLibres": 30,
+                    "labo": {
+                        "demonstrateur": "François Chamberland",
+                        "periode": 1,
+                        "groupe": 1
+                    }
                 }
+                
             ],
             "coursACompletes": [
                 {
