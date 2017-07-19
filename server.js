@@ -115,8 +115,14 @@ portail.post('/connexion', function(req, res) {
 
 // Gestion POST facture page d'accueil
 portail.post('/facture', function(req, res) {
+    console.log("Start - POST - facture.");
 
-    res.json({statut: "succes", contenu: 'Facture'});
+    var coursTermines = databaseHandler.getCoursTermines(database);
+    var coursActuel = databaseHandler.getCoursSession(database);
+    var resultat = formateurHandler.construirePageFactures(coursActuel, coursTermines);
+
+    res.set({ 'content-type': 'application/json; charset=utf-8' });
+    res.json({statut: "succes", contenu: resultat});
 });
 
 
