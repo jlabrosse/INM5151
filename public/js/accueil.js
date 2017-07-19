@@ -50,9 +50,8 @@ $('#inscription').click(function(){
 	}).then(function (response) {
 		if(response.statut == 'succes') {
 			$("#body-page").empty();
-			for(var i = 0; i < 2; i++){
-				$("#body-page").append($("<p style=\"text-align: center; color: white;\">").text(response.contenu + ' ' + i));
-			}
+			$("#body-page").append($("<p style=\"text-align: center; color: white;\">").text(' '));
+			$("#body-page").append(response.contenu);
 		}
 		else {
 			alert('Erreur');
@@ -72,9 +71,8 @@ $('#desinscription').click(function(){
 	}).then(function (response) {
 		if(response.statut == 'succes') {
 			$("#body-page").empty();
-			for(var i = 0; i < 4; i++){
-				$("#body-page").append($("<p style=\"text-align: center; color: white;\">").text(response.contenu + ' ' + i));
-			}
+			$("#body-page").append($("<p style=\"text-align: center; color: white;\">").text(' '));
+			$("#body-page").append(response.contenu);
 		}
 		else {
 			alert('Erreur');

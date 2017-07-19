@@ -109,20 +109,6 @@ portail.post('/horaire', function(req, res) {
 });
 
 
-// Gestion POST inscription page d'accueil
-portail.post('/inscription', function(req, res) {
-
-	res.json({statut: "succes", contenu: 'Inscription'});
-});
-
-
-// Gestion POST désinscription page d'accueil
-portail.post('/desinscription', function(req, res) {
-
-	res.json({statut: "succes", contenu: 'Désinscription'});
-});
-
-
 // Gestion POST relevé de notes page d'accueil
 portail.post('/relevedenotes', function(req, res) 
 {	
@@ -164,6 +150,96 @@ portail.post('/relevedenotes', function(req, res)
 	res.json({statut: "succes", contenu: resultat});
 });
 
+// Gestion POST inscription page d'accueil
+portail.post('/inscription', function(req, res) 
+{	
+	// TODO : Interroger la bd
+	// Exemple de données récupérées de la bd
+	var cours = [
+    {code: 'INF1120', name: 'Programmation I', credit: 3 , jour: 'Lundi', periode: 'Matin', duree: 3, type: 'Cours Magistral'}, 
+    {code: 'INF1120', name: 'Programmation I', credit: 3 , jour: 'Mardi', periode: 'Soir', duree: 2, type: 'Laboratoire'},
+    {code: 'INF1130', name: 'Mathématiques pour informaticien', credit: 3, jour: 'Mardi', periode: 'Apres-Midi', duree: 3, type: 'Cours Magistral'}, 
+    {code: 'INF4375', name: 'Paradigmes des échanges Internet', credit: 3, jour: 'Mercredi', periode: 'Apres-Midi', duree: 3, type: 'Cours Magistral'},
+    {code: 'INF4375', name: 'Paradigmes des échanges Internet', credit: 3 , jour: 'Mercredi', periode: 'Matin', duree: 2, type: 'Laboratoire'},  
+    {code: 'INM5151', name: 'Projet d\'analyse et de modélisation', credit: 3, jour: 'Jeudi', periode: 'Soir', duree: 3, type: 'Cours Magistral'}, 
+    {code: 'INF2120', name: 'Programmation II', credit: 3, jour: 'Vendredi', periode: 'Apres-Midi', duree: 3, type: 'Cours Magistral'}, 
+    {code: 'INF2120', name: 'Programmation II', credit: 3 , jour: 'Jeudi', periode: 'Apres-Midi', duree: 2, type: 'Laboratoire'}, 
+	];
+
+        // Si aucun cours, afficher un message approprie sur la page
+	
+	var horaireCours = '<h2>Horaire Session</h2>';
+	horaireCours += '<table class=\"cours\">';
+	horaireCours += '<col width="75"><col width="200"><col width="75">';
+	horaireCours += '<tr><th>Sigle</th><th>Nom</th><th>Jour</th><th>Periode</th><th>Duree</th><th>Type</th></tr>';
+	
+	var i;
+	for(i in cours)
+	{
+		horaireCours += '<tr>';
+		horaireCours += '<td>' + cours[i].code + '</td>';
+		horaireCours += '<td>' + cours[i].name + '</td>';
+		horaireCours += '<td>' + cours[i].jour + '</td>';
+                horaireCours += '<td>' + cours[i].periode + '</td>';
+                horaireCours += '<td>' + cours[i].duree + '</td>';
+                horaireCours += '<td>' + cours[i].type + '</td>';
+		horaireCours += '</tr>';
+	}
+	horaireCours += '<tr>';
+	horaireCours += '</table>';
+
+	// Tableau d'inscription 
+	horaireCours += '<h2>Inscription</h2>
+	horaireCours += '<table class=\"inscription"\">';
+	horaireCours += '<tr><th>Sigle</th><th>Groupe</th></tr>;
+        
+        
+	 
+	// Retourne le tableau html généré avec les données de la bd
+	res.set({ 'content-type': 'application/json; charset=utf-8' });
+	res.json({statut: "succes", contenu: horaireCours});
+});
+
+// Gestion POST inscription page d'accueil
+portail.post('/desinscription', function(req, res) 
+{
+    // TODO : Interroger la bd
+	// Exemple de données récupérées de la bd
+	var coursDes = [
+    {code: 'INF1120', name: 'Programmation I', credit: 3 , jour: 'Lundi', periode: 'Matin', duree: 3, type: 'Cours Magistral'}, 
+    {code: 'INF1130', name: 'Mathématiques pour informaticien', credit: 3, jour: 'Mardi', periode: 'Apres-Midi', duree: 3, type: 'Cours Magistral'}, 
+    {code: 'INF4375', name: 'Paradigmes des échanges Internet', credit: 3, jour: 'Mercredi', periode: 'Apres-Midi', duree: 3, type: 'Cours Magistral'},
+    {code: 'INM5151', name: 'Projet d\'analyse et de modélisation', credit: 3, jour: 'Jeudi', periode: 'Soir', duree: 3, type: 'Cours Magistral'}, 
+    {code: 'INF2120', name: 'Programmation II', credit: 3, jour: 'Vendredi', periode: 'Apres-Midi', duree: 3, type: 'Cours Magistral'}, 
+	];
+
+        // Si aucun cours, afficher un message approprie sur la page
+	
+	var horaireCours = '';
+	horaireCours += '<table class=\"cours\">';
+	horaireCours += '<col width="75"><col width="200"><col width="75">';
+	horaireCours += '<tr><th>Sigle</th><th>Nom</th><th>Jour</th><th>Periode</th><th>Duree</th><th>Supprimer</th></tr>';
+	
+	var i;
+	for(i in coursDes)
+	{
+		horaireCours += '<tr>';
+		horaireCours += '<td>' + coursDes[i].code + '</td>';
+		horaireCours += '<td>' + coursDes[i].name + '</td>';
+		horaireCours += '<td>' + coursDes[i].jour + '</td>';
+                horaireCours += '<td>' + coursDes[i].periode + '</td>';
+                horaireCours += '<td>' + coursDes[i].duree + '</td>';
+		horaireCours += '<td>' + '<button type="button">X</button>' + '</td>';
+		horaireCours += '</tr>';
+	}
+	horaireCours += '</table>';
+        
+        
+	 
+	// Retourne le tableau html généré avec les données de la bd
+	res.set({ 'content-type': 'application/json; charset=utf-8' });
+	res.json({statut: "succes", contenu: horaireCours});
+});
 
 //////////////////////////////////////////////////////////
 // Démarrage de l'application
