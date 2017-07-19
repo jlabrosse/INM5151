@@ -13,25 +13,27 @@ var fs = require('fs');
 var portail = express();
 portail.set('port', (process.env.PORT || 8080));
 
-
-/////////////////////////////////////
-// Bases de données
-/////////////////////////////////////
-var databaseHandler = require("./database/databaseHandler.js"); 
-var database = JSON.parse(fs.readFileSync('./database/database.json'));
-var databaseCours = JSON.parse(fs.readFileSync('./database/databaseCours.json'));
-var formateurHandler = require("./formateur/formateurHandler.js");
-
   
 /////////////////////////////////////
 // Settings
 /////////////////////////////////////
 portail.engine('.html', require('ejs').__express); // Pas sûr de cette ligne
-portail.set('views', __dirname + '/views');
 portail.set('view engine', 'html');
+portail.set('views', __dirname + '/views');
+portail.set('database', __dirname + '/database');
+portail.set('formateur', __dirname + '/formateur');
 portail.use(express.static(path.join(__dirname, 'public')));
 portail.use(bodyParser.urlencoded({extended: false}));
 portail.use(bodyParser.json());
+
+
+/////////////////////////////////////
+// Bases de données
+/////////////////////////////////////
+var databaseHandler = require(portail.get('database') + '/dataBaseHandler.js'); 
+var database = JSON.parse(fs.readFileSync(portail.get('database') + '/database.json'));
+var databaseCours = JSON.parse(fs.readFileSync(portail.get('database') + '/databaseCours.json'));
+var formateurHandler = require(portail.get('formateur') + '/formateurHandler.js');
 
 
 /////////////////////////////////////
@@ -113,8 +115,14 @@ portail.post('/connexion', function(req, res) {
 
 // Gestion POST facture page d'accueil
 portail.post('/facture', function(req, res) {
+    console.log("Start - POST - facture.");
 
-    res.json({statut: "succes", contenu: 'Facture'});
+    var coursTermines = databaseHandler.getCoursTermines(database);
+    var coursActuel = databaseHandler.getCoursSession(database);
+    var resultat = formateurHandler.construirePageFactures(coursActuel, coursTermines);
+
+    res.set({ 'content-type': 'application/json; charset=utf-8' });
+    res.json({statut: "succes", contenu: resultat});
 });
 
 
@@ -172,6 +180,4 @@ portail.post('/cheminement', function(req, res) {
 //////////////////////////////////////////////////////////
 portail.listen(portail.get('port'), function(){
     console.log("server is listening on: %s", portail.get('port'));
-	
-	databaseHandler.afficherDB(database);
 });
