@@ -157,10 +157,8 @@ $(document).on("click", ".cheminementCell a", function() {
 		var e = document.getElementById("coursAu" + cell.attr("id"));
 		var choix = e.options[e.selectedIndex].value;
 		prealables = findPrealableForOption(choix).split(' ');
-		console.log("prealable " + prealables);
 	}
 	for( var i = 0; i < prealables.length; ++i ) {
-		console.log(prealables[i]);
 		dimPrealablesCell( document.getElementById(prealables[i]) );
 	}
 	return false;//avoid propagation
@@ -171,9 +169,6 @@ function dimPrealablesCell( cell ) {
 	var prealables = cell.getAttribute("data-prealable").split(' ');
 	for( var i = 0; i < prealables.length; ++i ) {
 		if( prealables[i] !== "none") {
-			console.log("recursive call " + (prealables[i])); 
-			console.log("recursive call " + document.getElementById(prealables[i])); 
-
 			dimPrealablesCell( document.getElementById(prealables[i]));
 		}
 	}
@@ -181,7 +176,6 @@ function dimPrealablesCell( cell ) {
 }
 
 function findPrealableForOption( optionId ) {
-	console.log("id : " + optionId);
 	switch( optionId ) {
 		case "INF2015" : return "INF1120";
 		case "INF4100" : return "INF3105";

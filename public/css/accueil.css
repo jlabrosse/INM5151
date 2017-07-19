@@ -120,6 +120,10 @@ body {
   -moz-osx-font-smoothing: grayscale;      
 }
 */
+body{
+  font-family: "Roboto", sans-serif;
+}
+
 .notes{
   width:50%;
     height:75%;
@@ -132,12 +136,14 @@ body {
 }
 
 .cheminement{
+  border-spacing: 10px;
+  border-collapse: separate;
   width: 60%;
 	text-align: center;
 	margin-top: 50%;
 	margin: 0 auto 0 auto;
 	color: white;
-	border: 2px solid white;
+
 }
 
 .cheminementCell a{
@@ -148,18 +154,18 @@ body {
 }
 
 .complet{
-  background-color: #172;
-}
-
-.aFaire{
-  background-color: #721;
+  background-color: #0079be;
 }
 
 .enCours{
-  background-color: #127;
+  background-color: #002538;
 }
 
-th{
+.aFaire{
+  background-color: #888;
+}
+
+/*th{
 	border: 2px solid white;
 	border-spacing: 0;
 	border-radius: 5px;
@@ -173,7 +179,7 @@ td{
 	border-radius: 5px;
     -moz-border-radius: 5px;
     padding: 5px;
-}
+}*/
 
 .header {
 	text-align: center;
@@ -183,8 +189,8 @@ td{
     z-index: 1;
     top: 0;
     left: 0;
-    background-color: #2F558E;
-	color: #f1f1f1;
+    background-color: #0079be;
+	color: #002538;
 }
 
 .body-page{
@@ -196,8 +202,8 @@ td{
     z-index: 1;
     top: 10%;
     left: 0;
-    background-color: gray;
-	color: #f1f1f1;
+    /*background-color: gray;*/
+	/*color: #f1f1f1;*/
 }
 
 .footer {
@@ -208,8 +214,8 @@ td{
     z-index: 1;
     bottom: 0;
     left: 0;
-    background-color: #2F558E;
-	color: #f1f1f1;
+    background-color: #0079be;
+	color: black;
 }
 
 .menu {
@@ -227,7 +233,7 @@ td{
     z-index: 1;
     top: 10%;
     left: 0;
-    background-color: #2F558E;
+    background-color: #0079be;
     overflow-x: hidden;
     transition: 0.5s;
     padding-top: 60px;

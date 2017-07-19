@@ -195,7 +195,7 @@ portail.post('/cheminement', function(req, res) {
     {code: 'Compl.', name: 'Cours complémentaire', statut:'aFaire', prealable:'none'}, 
     {code: 'INF2160', name: 'Paradigmes de programmation', statut:'aFaire', prealable:'INF1130'}, 
     {code: 'INF5153', name: 'Génie logiciel: conception', statut:'aFaire', prealable:'INF5151'}, 
-    {code: 'INM5151', name: 'Projet d\'analyse et de modélisation', statut:'aFaire', prealable:'INF5151'}, 
+    {code: 'INM5151', name: 'Projet d\'analyse et de modélisation', statut:'aFaire', prealable:'INF5151 '}, 
     {code: 'Choix1', name: 'Cours au choix', statut:'aFaire', prealable:'Choix1'}, 
     {code: 'INF4375', name: 'Paradigmes des échanges Internet', statut:'aFaire', prealable:'INF2120'}, 
     {code: 'INF6150', name: 'Génie logiciel: conduite de projets informatiques', statut:'aFaire', prealable:'INF5153'}, 
@@ -235,8 +235,8 @@ portail.post('/cheminement', function(req, res) {
                     + ' style=\"cursor:pointer\"' 
                     + ' class=\"cheminementCell ' + cours[i].statut + '\"' 
                     + ' data-prealable=\"' + cours[i].prealable + '\">' 
-                    + '<a href=\"#\">'
-                    + cours[i].code + '</br>'  
+                    + '<a href=\"#\"><b>' 
+                    + cours[i].code + '</b></br>'  
                     + cours[i].name + '</a>';
         if( cours[i].code.match(/Choix./)) {
             resultat += '<select id=\"coursAu' + cours[i].code + '\">' + listChoix + '</select>';
