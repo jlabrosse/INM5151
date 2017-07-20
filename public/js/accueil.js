@@ -1,4 +1,6 @@
+/////////////////////////////////////////////////////////
 // Menu Facture
+/////////////////////////////////////////////////////////
 $('#facture').click(function(){  
 	var data = {};
 	$.ajax({
@@ -8,7 +10,7 @@ $('#facture').click(function(){
 	}).then(function (response) {
 		if(response.statut == 'succes') {
 			$("#body-page").empty();
-			$("#body-page").append("<p style=\"text-align: center; color: white;\">" + response.contenu + "</p>");
+			$("#body-page").append("<div style='text-align: center'>" + response.contenu + "</div>");
 		}
 		else {
 			alert('Erreur');
@@ -18,7 +20,9 @@ $('#facture').click(function(){
 	});
 });  
 
+/////////////////////////////////////////////////////////
 // Menu Horaire
+/////////////////////////////////////////////////////////
 $('#horaire').click(function(){  
 	var data = {};
 	$.ajax({
@@ -40,7 +44,9 @@ $('#horaire').click(function(){
 	});
 });       
    
+/////////////////////////////////////////////////////////
 // Menu inscription
+/////////////////////////////////////////////////////////
 $('#inscription').click(function(){  
 	var data = {};
 	$.ajax({
@@ -62,7 +68,9 @@ $('#inscription').click(function(){
 	});
 });     
    
+/////////////////////////////////////////////////////////
 // Menu désinscription
+/////////////////////////////////////////////////////////
 $('#desinscription').click(function(){  
 	var data = {};
 	$.ajax({
@@ -83,8 +91,10 @@ $('#desinscription').click(function(){
 		console.error(err);
 	});
 });   
-   
+
+/////////////////////////////////////////////////////////
 // Menu relevé de notes
+/////////////////////////////////////////////////////////
 $('#relevedenotes').click(function(){  
 	var data = {};
 	$.ajax({
@@ -122,8 +132,9 @@ $('#relevedenotes').click(function(){
 	});
 });   
    
-
+/////////////////////////////////////////////////////////
 // Menu cheminement
+/////////////////////////////////////////////////////////
 $('#cheminement').click(function(){  
 	var data = {};
 	$.ajax({
@@ -144,6 +155,9 @@ $('#cheminement').click(function(){
 	});
 });   
 
+/////////////////////////////////////////////////////////
+// Cheminement : gestion clic cellule tableau
+/////////////////////////////////////////////////////////
 $(document).on("click", ".cheminementCell a", function() {
 	var cells = document.getElementsByClassName("cheminementCell");
 	for( var i = 0; i < cells.length; i++ ) {
@@ -194,7 +208,9 @@ $(document).on("click", "#body-page", function() {
 
 });
 
-// Barre de menu
+/////////////////////////////////////////////////////////
+// Barre de menu : animation
+/////////////////////////////////////////////////////////
 $('.message a').click(function(){
    $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
 });

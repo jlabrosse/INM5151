@@ -3,23 +3,27 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Page d'accueil</title>
-    <link rel="stylesheet" href="css/accueil.css">
+    <link rel="stylesheet" href="css/general.css">
+	<link rel="stylesheet" href="css/accueil.css">
+	<link rel="stylesheet" href="css/reste.css">
 </head>
 
 <body>
 	<!-- Header -->
 	<div id="header" class="header">
-		<h1 style="margin:auto; line-height:51px; vertical-align:middle; text-align: center; color: white;">Portail &eacute;tudiant</h1>
+		<h1>Portail &eacute;tudiant</h1>
 	</div>
 
 	<!-- Contenu de la page -->
-	<div id="body-page" class="body-page">  
-		<p style="margin:auto; line-height:51px; vertical-align:middle; text-align: center; color: white;" id="affichage">Bienvenue sur votre portail &eacute;tudiant</p>
+	<div id="body-page" class="body-page">
+		<p id="label">Accueil</p>
+		<p id="message">Bienvenue sur votre portail &eacute;tudiant</p>
 	</div>
 	
 	<!-- Footer -->
 	<div id="footer" class="footer">
-		<h1 style="text-align: center; color: white;">INM5151</h1>
+		<a class="footerLink" href="www.uqam.ca">UQAM - Université du Québec à Montréal</a> |
+		<a class="footerLink" href="www.etudier.uqam.ca/nous-joindre">Nous joindre</a>
 	</div>
 
 	<!-- Barre de navigation -->
@@ -39,7 +43,7 @@
 			<a id="cheminement" href="#">Cheminement</a>
 		</ul>
 	</div>
-	<span style="font-size:30px;cursor:pointer" class="menu" onclick="openNav()">&#9776; Menu</span>
+	<span class="menu" onclick="openNav()"> &#9776; Menu</span>
 	
 	<!-- Scripts -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
