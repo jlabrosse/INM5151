@@ -128,22 +128,45 @@ portail.post('/facture', function(req, res) {
 
 // Gestion POST horaire page d'accueil
 portail.post('/horaire', function(req, res) {
-
-    res.json({statut: "succes", contenu: 'Horaire'});
+    // Chargement des cours de la database
+    console.log("Page Horaire : Chargement donnees");
+    var coursCourant = databaseHandler.getCoursSession(database);
+    // Appel Fonction du formateur
+    console.log("Page Horaire : Appel du formateur");
+    var horaireCours = formateurHandler.construirePageHoraire(coursCourant);
+    
+    console.log("Page Horaire : Done");
+    res.json({statut: "succes", contenu: horaireCours});
 });
 
 
 // Gestion POST inscription page d'accueil
 portail.post('/inscription', function(req, res) {
-
-    res.json({statut: "succes", contenu: 'Inscription'});
+    // Chargement des cours de la database
+    console.log("Page Inscription : Chargement donnees");
+    var coursCourant = databaseHandler.getCoursSession(database);
+    var coursFutures = databaseHandler.getCoursACompleter(database);
+    var coursTermines = databaseHandler.getCoursTermines(database);
+    // Appel Fonction du formateur
+    console.log("Page Inscription : Appel du formateur");
+    var horaireCours = formateurHandler.construirePageInscription(coursCourant, coursFutures, coursTermines);
+    
+    console.log("Page Inscription : Done");
+    res.json({statut: "succes", contenu: horaireCours});
 });
 
 
 // Gestion POST désinscription page d'accueil
 portail.post('/desinscription', function(req, res) {
-
-    res.json({statut: "succes", contenu: 'Désinscription'});
+    // Chargement des cours de la database
+    console.log("Page Desincription : Chargement donnees");
+    var coursCourant = databaseHandler.getCoursSession(database);
+    // Appel Fonction du formateur
+    console.log("Page Desincription : Appel du formateur");
+    var horaireCours = formateurHandler.construirePageDesinscription(coursCourant);
+    
+    console.log("Page Desincription : Done");
+    res.json({statut: "succes", contenu: horaireCours});
 });
 
 
