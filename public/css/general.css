@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Cabin|Cinzel+Decorative|Roboto');
+@import url('https://fonts.googleapis.com/css?family=Cabin|Roboto');
 
 * {
 	box-sizing: border-box;
@@ -17,13 +17,17 @@ body {
     z-index: 1;
     top: 0;
     left: 0;
-	font-family: 'Cinzel Decorative', cursive;
+	font-family: 'Cabin', sans-serif;
     background-color: #00ade6;
 	color: #fcfcfa;
 }
 
 .header h1 {
-	padding-top: 1%;
+	padding-top: -3%;
+	padding-bottom: -4%;
+}
+
+.header p {
 }
 
 .body-page {
@@ -112,4 +116,60 @@ li {
     right: 25px;
     font-size: 36px;
     margin-left: 50px;
+}
+
+#label {
+	font-family: 'Cabin', sans-serif;
+	color: #337bae;
+	font-size: 30px;
+}
+
+#message {
+	font-family: 'Roboto', sans-serif;
+	color: darkslategrey;
+	font-size: 20px;
+}
+
+.cheminement{
+	width: 60%;
+	text-align: center;
+	margin-bottom: 5%;
+	color: white;
+	border: 2px solid white;
+	font-family: 'Roboto', sans-serif;
+}
+
+.cheminementCell a{
+  display:block;
+  position:relative;
+  text-decoration: none;
+  color: white;
+}
+
+.complet{
+  background-color: #011a27;
+}
+
+.aFaire{
+  background-color: #f0810f;
+}
+
+.enCours{
+  background-color: #063852;
+}
+
+th{
+	border: 2px solid white;
+	border-spacing: 0;
+	border-radius: 5px;
+    -moz-border-radius: 5px;
+    padding: 5px;
+}
+
+td{
+	border: 1px solid white;
+	border-spacing: 0;
+	border-radius: 5px;
+    -moz-border-radius: 5px;
+    padding: 5px;
 }

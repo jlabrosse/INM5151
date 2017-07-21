@@ -144,7 +144,7 @@ $('#cheminement').click(function(){
 	}).then(function (response) {
 		if(response.statut == 'succes') {
 			$("#body-page").empty();
-			$("#body-page").append($("<p style=\"text-align: center; color: white;\">").text(' '));
+			$("#body-page").append($("<p>").text(' '));
 			$("#body-page").append(response.contenu);
 		}
 		else {
