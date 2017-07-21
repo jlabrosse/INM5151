@@ -1,5 +1,3 @@
-@import url(https://fonts.googleapis.com/css?family=Roboto:300);
-
 .login-page {
   position: absolute;
   width: 300px;
@@ -114,7 +112,8 @@ body {
   color: white;
   border: 2px solid white;
   border-collapse: collapse;
-}
+
+/*}
 
 .cheminement{
   border-spacing: 10px;
@@ -160,4 +159,5 @@ td{
 	border-radius: 5px;
     -moz-border-radius: 5px;
     padding: 5px;
+}*/
 }

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Cabin|Cinzel+Decorative|Roboto');
+@import url('https://fonts.googleapis.com/css?family=Cabin|Roboto');
 
 * {
 	box-sizing: border-box;
@@ -11,19 +11,23 @@ body {
 .header {
 	margin: 0 auto;
 	text-align: center;
-    height: 120px;
+    height: 18%;
     width: 100%;
     position: fixed;
     z-index: 1;
     top: 0;
     left: 0;
-	font-family: 'Cinzel Decorative', cursive;
-    background-color: #1a405f;
+	font-family: 'Cabin', sans-serif;
+    background-color: #00ade6;
 	color: #fcfcfa;
 }
 
 .header h1 {
-	padding-top: 20px;
+	padding-top: -3%;
+	padding-bottom: -4%;
+}
+
+.header p {
 }
 
 .body-page {
@@ -33,20 +37,20 @@ body {
     width: 100%;
     position: fixed;
     z-index: 1;
-    top: 120px;
-    left: 300px;
+    top: 20%;
+    left: 22%;
     background-color: #fcfcfa;
 }
 
 .footer {
 	text-align: center; 
-    height: 40px;
+    height: 8%;
     width: 100%;
     position: fixed;
     z-index: 1;
     bottom: 0;
     left: 0;
-    background-color: #1a405f;
+    background-color: #00ade6;
 	color: #fcfcfa;
 }
 
@@ -80,19 +84,19 @@ li {
     z-index: 1;
     top: 120px;
     left: 0;
-	color: #1a405f;
+	color: #00ade6;
 	font-family: 'Cabin', sans-serif;
 	font-size: 20px;
 }
 
 .sidenav {
-    height: 475px;
+    height: 470px;
     width: 0;
     position: fixed;
     z-index: 1;
-    top: 120px;
+    top: 18%;
     left: 0;
-    background-color: #337bae;
+    background-color: #004e67;
     overflow-x: hidden;
     transition: 0.5s;
     padding-top: 60px;
@@ -102,7 +106,7 @@ li {
     padding: 8px 8px 8px 32px;
     text-decoration: none;
     font-size: 20px;
-    color: #1a405f;
+    color: #00ade6;
 	font-family: 'Cabin', sans-serif;
     display: block;
     transition: 0.3s;
@@ -118,4 +122,60 @@ li {
     right: 25px;
     font-size: 36px;
     margin-left: 50px;
+}
+
+#label {
+	font-family: 'Cabin', sans-serif;
+	color: #337bae;
+	font-size: 30px;
+}
+
+#message {
+	font-family: 'Roboto', sans-serif;
+	color: darkslategrey;
+	font-size: 20px;
+}
+
+.cheminement{
+	width: 60%;
+	text-align: center;
+	margin-bottom: 5%;
+	color: white;
+	border: 2px solid white;
+	font-family: 'Roboto', sans-serif;
+}
+
+.cheminementCell a{
+  display:block;
+  position:relative;
+  text-decoration: none;
+  color: white;
+}
+
+.complet{
+  background-color: #011a27;
+}
+
+.aFaire{
+  background-color: #f0810f;
+}
+
+.enCours{
+  background-color: #063852;
+}
+
+th{
+	border: 2px solid white;
+	border-spacing: 0;
+	border-radius: 5px;
+    -moz-border-radius: 5px;
+    padding: 5px;
+}
+
+td{
+	border: 1px solid white;
+	border-spacing: 0;
+	border-radius: 5px;
+    -moz-border-radius: 5px;
+    padding: 5px;
 }
