@@ -131,7 +131,11 @@
                     "resultat": "A",
                     "nbrPlaceLibres": 30,
                     "labo": null
-                },
+                }
+
+
+            ],
+            "sessionEnCours": [
                 {
                     "code": "ORH1163",
                     "name": "Comportement organisationnel",
@@ -143,22 +147,6 @@
                     "groupe": 30,
                     "frais": 300.00,
                     "resultat": "A",
-                    "nbrPlaceLibres": 30,
-                    "labo": null
-                }
-            ],
-            "sessionEnCours": [
-                {
-                    "code": "Langue",
-                    "name": "Cours de langue",
-                    "statut": "enCours",
-                    "prealable": "none",
-                    "local": "PK-R650",
-                    "periode": 1,
-                    "professeur": "Jacques Berger",
-                    "groupe": 30,
-                    "frais": 300.00,
-                    "resultat": "",
                     "nbrPlaceLibres": 30,
                     "labo": null
                 },
@@ -236,6 +224,20 @@
                         "periode": 1,
                         "groupe": 1
                     }
+                },
+                {   
+                    "code": "Langue",
+                    "name": "Cours de langue",
+                    "statut": "enCours",
+                    "prealable": "none",
+                    "local": "PK-R650",
+                    "periode": 1,
+                    "professeur": "Jacques Berger",
+                    "groupe": 30,
+                    "frais": 300.00,
+                    "resultat": "",
+                    "nbrPlaceLibres": 30,
+                    "labo": null
                 },
                 {
                     "code": "INF1130",
