@@ -10,13 +10,8 @@ function construireTableauCheminement(databaseCours, database)
             '<option>INF5071</option>' +
             '<option>INF5171</option>';
 
-<<<<<<< HEAD
 	var resultat = '<table class=\"cheminement\">';
-    resultat += '<col width="100"><col width="100"><col width="100"><col width="100"><col width="100">';
-=======
-    var resultat = '<table class=\"cheminement\">';
     resultat += '<col width="20%"><col width="20%"><col width="20%"><col width="20%"><col width="20%">';
->>>>>>> 04c6af40ffa9527a768ae8108919994961a707d3
     var i;
     var j = 0;
     var newLine = 5;
