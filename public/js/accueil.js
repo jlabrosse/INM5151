@@ -10,12 +10,8 @@ $('#facture').click(function(){
 	}).then(function (response) {
 		if(response.statut == 'succes') {
 			$("#body-page").empty();
-<<<<<<< HEAD
-			$("#body-page").append("<div>" + response.contenu + "</div>");
-=======
 			$("#body-page").append("<div style='text-align: center'>" + response.contenu + "</div>");
 			hideLegend();
->>>>>>> 04c6af40ffa9527a768ae8108919994961a707d3
 		}
 		else {
 			alert('Erreur');
