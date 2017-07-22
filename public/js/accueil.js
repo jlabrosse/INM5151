@@ -10,7 +10,7 @@ $('#facture').click(function(){
 	}).then(function (response) {
 		if(response.statut == 'succes') {
 			$("#body-page").empty();
-			$("#body-page").append("<div style='text-align: center'>" + response.contenu + "</div>");
+			$("#body-page").append("<div>" + response.contenu + "</div>");
 		}
 		else {
 			alert('Erreur');

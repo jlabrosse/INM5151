@@ -10,7 +10,7 @@ function construireTableauCheminement(databaseCours)
             '<option>INF5071</option>' +
             '<option>INF5171</option>';
 
-    var resultat = '<table class=\"cheminement\">';
+	var resultat = '<table class=\"cheminement\">';
     resultat += '<col width="100"><col width="100"><col width="100"><col width="100"><col width="100">';
     var i;
     var j = 0;
@@ -41,7 +41,6 @@ function construireTableauCheminement(databaseCours)
 
     }
     resultat += '</tr></table>';
-
     return resultat;
 }
 
@@ -98,7 +97,7 @@ function construireTableauFactureCourante(coursCourant)
 
     resultat += '<tfoot><th style="text-align:left" colspan="2">Total :</th><td>' + total + '</td></tfoot></table>'
 
-    return '<h2>FACTURE COURANTE</h2>' + resultat;
+    return '<h2>Facture courante</h2>' + resultat;
 }
 
 //////////////////////////////////////////////////
@@ -125,7 +124,7 @@ function construireTableauFactureAnterieure(coursAnterieure)
 
     resultat += '<tfoot><th style="text-align:left" colspan="2">Total :</th><td>' + total + '</td></tfoot></table>'
 
-    return '<h2>FACTURE ANTERIEURE</h2>' + resultat;
+    return '<h2>Facture anterieure</h2>' + resultat;
 }
 
 //////////////////////////////////////////////////
@@ -277,7 +276,7 @@ function construirePageFactures(coursCourant, coursAnterieure)
     var tabCourant = construireTableauFactureCourante(coursCourant);
     var tabAnterieure = construireTableauFactureAnterieure(coursAnterieure);
 
-    var title = '<div><h1>FACTURE COURANTE ET SOLDE</h1>';
+    var title = '<div><h1>Facture courante et solde</h1>';
 
     var resultat = title + tabCourant + tabAnterieure + '</div>';
 

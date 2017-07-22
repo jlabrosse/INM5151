@@ -158,12 +158,19 @@ li {
   background-color: #063852;
 }
 
+.facture, .notes {
+	border-collapse: collapse;
+	width: 60%;
+	margin-bottom: 5%;
+}
+
 th{
-	border: 2px solid white;
-	border-spacing: 0;
-	border-radius: 5px;
     -moz-border-radius: 5px;
     padding: 5px;
+	font-family: 'Cabin', sans-serif;
+	background-color: #004e67;
+	color: #fcfcfa;
+	
 }
 
 td{
@@ -172,4 +179,19 @@ td{
 	border-radius: 5px;
     -moz-border-radius: 5px;
     padding: 5px;
+	font-family: 'Roboto', sans-serif;
+	color: darkslategrey;
+}
+
+tr:nth-child(even){
+	background-color: #f2f2f2;
+}
+
+h1, h2 {
+	font-family: 'Cabin', sans-serif;
+	color: #337bae;
+}
+
+h1 {
+	margin-left: 25%;
 }
