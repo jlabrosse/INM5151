@@ -1,3 +1,8 @@
+var fs = require('fs');
+var databaseHandler = require('../database/dataBaseHandler.js'); 
+var database = JSON.parse(fs.readFileSync('./database/database.json'));
+
+
 //////////////////////////////////////////////////
 // Construction tableau cheminement
 //////////////////////////////////////////////////
@@ -65,7 +70,12 @@ function findCoursStatus ( database, sigle ) {
 //////////////////////////////////////////////////
 function construireTableauReleveNotes(coursTermines)
 {
-    var resultat = '';
+    var resultat = '<h2>Relevé de notes</h2>';
+	resultat += '<div style=\' display: flex; width: 100%; text-align: center; \'>';
+	resultat += '<div style=\' margin-left: 2%; width: 15%; background-color: #39E85C; border: 5px solid rgb(0, 78, 103); border-radius: 25px; padding: 0px; \'> <h3 style=\' color: rgb(51, 123, 174); \'> Crédits validés </h3> <h2> ' + coursTermines.length * 3 + ' </h2> </div>';
+	resultat += '<div style=\' margin-left: 2%; width: 15%; background-color: lightgrey; border: 5px solid rgb(0, 78, 103); border-radius: 25px; padding: 0px;\'> <h3 style=\' color: rgb(51, 123, 174); \'> Total </h3> <h2> ' + databaseHandler.getTotalCreditProgramme(database) + ' </h2> </div> </div>';
+	resultat += '</div>';
+	resultat += '<p></p>';
     resultat += '<table class=\"notes\">';
     resultat += '<col width="75"><col width="200"><col width="75"><col width="75">';
     resultat += '<tr><th>Sigle</th><th>Titre</th><th>Crédit</th><th>Résultat</th></tr>';
