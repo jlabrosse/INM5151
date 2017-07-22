@@ -1,7 +1,7 @@
 //////////////////////////////////////////////////
 // Construction tableau cheminement
 //////////////////////////////////////////////////
-function construireTableauCheminement(databaseCours)
+function construireTableauCheminement(databaseCours, database)
 {
     var listChoix = '<option>Choix</option>' +
             '<option>INF2015</option>' +
@@ -10,8 +10,13 @@ function construireTableauCheminement(databaseCours)
             '<option>INF5071</option>' +
             '<option>INF5171</option>';
 
+<<<<<<< HEAD
 	var resultat = '<table class=\"cheminement\">';
     resultat += '<col width="100"><col width="100"><col width="100"><col width="100"><col width="100">';
+=======
+    var resultat = '<table class=\"cheminement\">';
+    resultat += '<col width="20%"><col width="20%"><col width="20%"><col width="20%"><col width="20%">';
+>>>>>>> 04c6af40ffa9527a768ae8108919994961a707d3
     var i;
     var j = 0;
     var newLine = 5;
@@ -28,11 +33,11 @@ function construireTableauCheminement(databaseCours)
         }
         resultat += '<td id=\"' + databaseCours[i].code + '\"'
                 + ' style=\"cursor:pointer\"'
-                + ' class=\"cheminementCell ' + databaseCours[i].statut + '\"'
+                + ' class=\"cheminementCell ' + findCoursStatus(database, databaseCours[i].code) + '\"'
                 + ' data-prealable=\"' + databaseCours[i].prealable + '\">'
-                + '<a href=\"#\">'
-                + databaseCours[i].code + '</br>'
-                + databaseCours[i].name + '</a>';
+                + '<a class="cheminementSigle" href=\"#\">'
+                + databaseCours[i].code + '</br><span class="cheminementName">'
+                + databaseCours[i].name + '</span></a>';
         if (databaseCours[i].code.match(/Choix./)) {
             resultat += '<select id=\"coursAu' + databaseCours[i].code + '\">' + listChoix + '</select>';
         }
@@ -44,6 +49,21 @@ function construireTableauCheminement(databaseCours)
     return resultat;
 }
 
+function findCoursStatus ( database, sigle ) {
+    var complet = database['etudiant']['programme']['coursTermines'];
+    var enCours = database['etudiant']['programme']['sessionEnCours'];
+    var aFaire = database['etudiant']['programme']['coursACompletes'];
+    for( var i = 0; i < complet.length; ++i ) {
+        if( complet[i]['code'] === sigle )
+            return "complet";
+    }
+    for( var i = 0; i < enCours.length; ++i ) {
+        if( enCours[i]['code'] === sigle )
+            return "enCours";
+    }
+    return "aFaire";
+
+}
 
 //////////////////////////////////////////////////
 // Construction tableau relevé de  notes
@@ -290,8 +310,8 @@ function construirePageFactures(coursCourant, coursAnterieure)
 //////////////////////////////////////////////////
 module.exports =
         {
-            construireTableauCheminement: function (db) {
-                return construireTableauCheminement(db);
+            construireTableauCheminement: function (dbc, db) {
+                return construireTableauCheminement(dbc, db);
             },
             construireTableauReleveNotes: function (db) {
                 return construireTableauReleveNotes(db);

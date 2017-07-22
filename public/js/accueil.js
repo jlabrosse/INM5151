@@ -10,7 +10,12 @@ $('#facture').click(function(){
 	}).then(function (response) {
 		if(response.statut == 'succes') {
 			$("#body-page").empty();
+<<<<<<< HEAD
 			$("#body-page").append("<div>" + response.contenu + "</div>");
+=======
+			$("#body-page").append("<div style='text-align: center'>" + response.contenu + "</div>");
+			hideLegend();
+>>>>>>> 04c6af40ffa9527a768ae8108919994961a707d3
 		}
 		else {
 			alert('Erreur');
@@ -35,6 +40,7 @@ $('#horaire').click(function(){
 			for(var i = 0; i < 5; i++){
 				$("#body-page").append($("<p style=\"text-align: center; color: white;\">").text(response.contenu + ' ' + i));
 			}
+			hideLegend();
 		}
 		else {
 			alert('Erreur');
@@ -59,6 +65,7 @@ $('#inscription').click(function(){
 			for(var i = 0; i < 2; i++){
 				$("#body-page").append($("<p style=\"text-align: center; color: white;\">").text(response.contenu + ' ' + i));
 			}
+			hideLegend();
 		}
 		else {
 			alert('Erreur');
@@ -83,6 +90,7 @@ $('#desinscription').click(function(){
 			for(var i = 0; i < 4; i++){
 				$("#body-page").append($("<p style=\"text-align: center; color: white;\">").text(response.contenu + ' ' + i));
 			}
+			hideLegend();
 		}
 		else {
 			alert('Erreur');
@@ -123,6 +131,7 @@ $('#relevedenotes').click(function(){
 			$("#body-page").append(table);
 			*/
 			$("#body-page").append(response.contenu);
+			hideLegend();
 		}
 		else {
 			alert('Erreur');
@@ -146,6 +155,7 @@ $('#cheminement').click(function(){
 			$("#body-page").empty();
 			$("#body-page").append($("<p>").text(' '));
 			$("#body-page").append(response.contenu);
+			showLegend();
 		}
 		else {
 			alert('Erreur');
@@ -154,6 +164,17 @@ $('#cheminement').click(function(){
 		console.error(err);
 	});
 });   
+
+
+function showLegend() {
+	$('#rightBar').html('<div class="complet square"d></div><p>Cours compl&eacute;t&eacute;</p>' +
+						'<div class="enCours square"d></div><p>Cours en cours</p>' +
+						'<div class="aFaire square"d></div><p>Cours &agrave; faire</p>');
+}
+
+function hideLegend() {
+	$('#rightBar').html('');
+}
 
 /////////////////////////////////////////////////////////
 // Cheminement : gestion clic cellule tableau
@@ -171,23 +192,26 @@ $(document).on("click", ".cheminementCell a", function() {
 		var e = document.getElementById("coursAu" + cell.attr("id"));
 		var choix = e.options[e.selectedIndex].value;
 		prealables = findPrealableForOption(choix).split(' ');
-		console.log("prealable " + prealables);
 	}
 	for( var i = 0; i < prealables.length; ++i ) {
-		console.log(prealables[i]);
 		dimPrealablesCell( document.getElementById(prealables[i]) );
 	}
 	return false;//avoid propagation
 
 });
 
+$(document).on("click", "select", function() {
+	var cell = $(this).parent();
+	var e = document.getElementById("coursAu" + cell.attr("id"));
+	var choix = e.options[e.selectedIndex].value;
+	prealables = findPrealableForOption(choix).split(' ');
+	$(cell).find('.cheminementName').text(getOptionName(choix));
+});
+
 function dimPrealablesCell( cell ) {
 	var prealables = cell.getAttribute("data-prealable").split(' ');
 	for( var i = 0; i < prealables.length; ++i ) {
 		if( prealables[i] !== "none") {
-			console.log("recursive call " + (prealables[i])); 
-			console.log("recursive call " + document.getElementById(prealables[i])); 
-
 			dimPrealablesCell( document.getElementById(prealables[i]));
 		}
 	}
@@ -195,7 +219,6 @@ function dimPrealablesCell( cell ) {
 }
 
 function findPrealableForOption( optionId ) {
-	console.log("id : " + optionId);
 	switch( optionId ) {
 		case "INF2015" : return "INF1120";
 		case "INF4100" : return "INF3105";
@@ -203,6 +226,17 @@ function findPrealableForOption( optionId ) {
 		case "INF5071" : return "INF3105 MAT1600";
 		case "INF5171" : return "INF3172";
 		default : return "none";
+	}
+}
+
+function getOptionName( optionId ) {
+	switch( optionId ) {
+		case "INF2015" : return "Développement agile";
+		case "INF4100" : return "Analyse d'algorithme";
+		case "INF5000" : return "Théorie des compilateurs";
+		case "INF5071" : return "Infographie";
+		case "INF5171" : return "Programmation parallèle";
+		default : return "Cours au choix";
 	}
 }
 

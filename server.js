@@ -189,7 +189,7 @@ portail.post('/relevedenotes', function(req, res)
 portail.post('/cheminement', function(req, res) {
 	
 	// Construction du tableau de cheminement
-	var resultat = formateurHandler.construireTableauCheminement(databaseCours);
+	var resultat = formateurHandler.construireTableauCheminement(databaseCours, database);
 	
     // Retourne le tableau html généré avec les données de la bd
     res.set({ 'content-type': 'application/json; charset=utf-8' });
