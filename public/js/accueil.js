@@ -33,7 +33,8 @@ $('#horaire').click(function(){
 	}).then(function (response) {
 		if(response.statut == 'succes') {
 			$("#body-page").empty();
-			$("#body-page").append(response.contenu );
+			$("#body-page").append($("<p style=\"text-align: center; color: white;\">").text(' '));
+			$("#body-page").append(response.contenu);
 			hideLegend();
 		}
 		else {
@@ -56,6 +57,7 @@ $('#inscription').click(function(){
 	}).then(function (response) {
 		if(response.statut == 'succes') {
 			$("#body-page").empty();
+			$("#body-page").append($("<p style=\"text-align: center; color: white;\">").text(' '));
 			$("#body-page").append(response.contenu);
 			hideLegend();
 		}
@@ -79,6 +81,7 @@ $('#desinscription').click(function(){
 	}).then(function (response) {
 		if(response.statut == 'succes') {
 			$("#body-page").empty();
+			$("#body-page").append($("<p style=\"text-align: center; color: white;\">").text(' '));
 			$("#body-page").append(response.contenu);
 			hideLegend();
 		}
@@ -102,24 +105,7 @@ $('#relevedenotes').click(function(){
 	}).then(function (response) {
 		if(response.statut == 'succes') {
 			$("#body-page").empty();
-			
 			$("#body-page").append($("<p style=\"text-align: center; color: white;\">").text(' '));
-			
-			/*
-			//Exemple de génération de tableau du côté client
-			var table = $('<table></table>').addClass('notes').attr('id','notes');
-			for (var i = 0; i < 10; i++) 
-			{
-                row = $('<tr></tr>');
-                for (var j = 0; j < 3; j++) 
-				{
-                    var rowData = $('<td></td>').addClass('bar').text(response.contenu + ' ' + i);
-                    row.append(rowData);
-                }
-                table.append(row);
-            }
-			$("#body-page").append(table);
-			*/
 			$("#body-page").append(response.contenu);
 			hideLegend();
 		}
@@ -154,16 +140,6 @@ $('#cheminement').click(function(){
 	});
 });   
 
-
-function showLegend() {
-	$('#rightBar').html('<div class="complet square"d></div><p>Cours compl&eacute;t&eacute;</p>' +
-						'<div class="enCours square"d></div><p>Cours en cours</p>' +
-						'<div class="aFaire square"d></div><p>Cours &agrave; faire</p>');
-}
-
-function hideLegend() {
-	$('#rightBar').html('');
-}
 
 /////////////////////////////////////////////////////////
 // Cheminement : gestion clic cellule tableau
@@ -234,7 +210,6 @@ $(document).on("click", "#body-page", function() {
 	for( var i = 0; i < cells.length; i++ ) {
 		cells[i].style.opacity = 1;
 	}
-
 });
 
 /////////////////////////////////////////////////////////
@@ -255,4 +230,18 @@ function openNav() {
 
 function closeNav() {
 	document.getElementById("mySidenav").style.width = "0";
+}
+
+
+/////////////////////////////////////////////////////////
+// Gestion de la légende
+/////////////////////////////////////////////////////////
+function showLegend() {
+	$('#rightBar').html('<div class="complet square"d></div><p>Cours compl&eacute;t&eacute;</p>' +
+						'<div class="enCours square"d></div><p>Cours en cours</p>' +
+						'<div class="aFaire square"d></div><p>Cours &agrave; faire</p>');
+}
+
+function hideLegend() {
+	$('#rightBar').html('');
 }
