@@ -33,9 +33,7 @@ $('#horaire').click(function(){
 	}).then(function (response) {
 		if(response.statut == 'succes') {
 			$("#body-page").empty();
-			for(var i = 0; i < 5; i++){
-				$("#body-page").append($("<p style=\"text-align: center; color: white;\">").text(response.contenu + ' ' + i));
-			}
+			$("#body-page").append(response.contenu );
 			hideLegend();
 		}
 		else {
@@ -58,9 +56,7 @@ $('#inscription').click(function(){
 	}).then(function (response) {
 		if(response.statut == 'succes') {
 			$("#body-page").empty();
-			for(var i = 0; i < 2; i++){
-				$("#body-page").append($("<p style=\"text-align: center; color: white;\">").text(response.contenu + ' ' + i));
-			}
+			$("#body-page").append(response.contenu);
 			hideLegend();
 		}
 		else {
@@ -83,9 +79,7 @@ $('#desinscription').click(function(){
 	}).then(function (response) {
 		if(response.statut == 'succes') {
 			$("#body-page").empty();
-			for(var i = 0; i < 4; i++){
-				$("#body-page").append($("<p style=\"text-align: center; color: white;\">").text(response.contenu + ' ' + i));
-			}
+			$("#body-page").append(response.contenu);
 			hideLegend();
 		}
 		else {
@@ -149,7 +143,6 @@ $('#cheminement').click(function(){
 	}).then(function (response) {
 		if(response.statut == 'succes') {
 			$("#body-page").empty();
-			$("#body-page").append($("<p>").text(' '));
 			$("#body-page").append(response.contenu);
 			showLegend();
 		}
@@ -201,7 +194,7 @@ $(document).on("click", "select", function() {
 	var e = document.getElementById("coursAu" + cell.attr("id"));
 	var choix = e.options[e.selectedIndex].value;
 	prealables = findPrealableForOption(choix).split(' ');
-	$(cell).find('.cheminementName').text(getOptionName(choix));
+	$(cell).find('.cheminementName').html(getOptionName(choix));
 });
 
 function dimPrealablesCell( cell ) {
@@ -227,11 +220,11 @@ function findPrealableForOption( optionId ) {
 
 function getOptionName( optionId ) {
 	switch( optionId ) {
-		case "INF2015" : return "Développement agile";
+		case "INF2015" : return "D&eacute;veloppement agile";
 		case "INF4100" : return "Analyse d'algorithme";
-		case "INF5000" : return "Théorie des compilateurs";
+		case "INF5000" : return "Th&eacute;orie des compilateurs";
 		case "INF5071" : return "Infographie";
-		case "INF5171" : return "Programmation parallèle";
+		case "INF5171" : return "Programmation parall&egrave;le";
 		default : return "Cours au choix";
 	}
 }

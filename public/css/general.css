@@ -23,8 +23,10 @@ body {
 }
 
 .header h1 {
-	padding-top: -3%;
-	padding-bottom: -4%;
+	padding-top: 0.5%;
+    margin-left: 0%;
+    color: white;
+	/*padding-bottom: 4%;*/
 }
 
 .header p {
@@ -32,7 +34,7 @@ body {
 
 .body-page {
 	overflow-y: auto;
-	text-align: left; 
+	text-align: center; 
 	height: 80%;
     width: 75%;
     position: fixed;
