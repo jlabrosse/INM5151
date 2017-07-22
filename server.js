@@ -37,7 +37,7 @@ var formateurHandler = require(portail.get('formateur') + '/formateurHandler.js'
 
 
 /////////////////////////////////////
-// Page de bienvenue 
+// Gestion des GET
 /////////////////////////////////////
 portail.get('/', function(req, res) 
 {   
@@ -48,9 +48,6 @@ portail.get('/', function(req, res)
 });
 
 
-/////////////////////////////////////
-// Gestion des GET
-/////////////////////////////////////
 portail.get('/connexion', function(req, res) 
 {   
     console.log('Page de connexion');
@@ -64,26 +61,6 @@ portail.get('/accueil', function(req, res)
 {
     // Affiche la page accueil.html
     res.render('accueil');
-});
-
-
-portail.get('/facture', function(req, res)
-{
-    // Affiche la page facture.html
-    res.render('facture');
-});
-
-
-portail.get('/horaire', function(req, res)
-{
-    // Affiche la page horaire.html
-    res.render('horaire');
-});
-
-portail.get('/cheminement', function(req, res)
-{
-    // Affiche la page cheminement.html
-    res.render('cheminement');
 });
 
 
@@ -128,26 +105,31 @@ portail.post('/facture', function(req, res) {
 
 // Gestion POST horaire page d'accueil
 portail.post('/horaire', function(req, res) {
-    // Chargement des cours de la database
+    
+	// Chargement des cours de la database
     console.log("Page Horaire : Chargement donnees");
     var coursCourant = databaseHandler.getCoursSession(database);
+	
     // Appel Fonction du formateur
     console.log("Page Horaire : Appel du formateur");
     var horaireCours = formateurHandler.construirePageHoraire(coursCourant);
-    
+		
     console.log("Page Horaire : Done");
+	res.set({ 'content-type': 'application/json; charset=utf-8' });
     res.json({statut: "succes", contenu: horaireCours});
 });
 
 
 // Gestion POST inscription page d'accueil
 portail.post('/inscription', function(req, res) {
-    // Chargement des cours de la database
+    
+	// Chargement des cours de la database
     console.log("Page Inscription : Chargement donnees");
     var coursCourant = databaseHandler.getCoursSession(database);
     var coursFutures = databaseHandler.getCoursACompleter(database);
     var coursTermines = databaseHandler.getCoursTermines(database);
-    // Appel Fonction du formateur
+    
+	// Appel Fonction du formateur
     console.log("Page Inscription : Appel du formateur");
     var horaireCours = formateurHandler.construirePageInscription(coursCourant, coursFutures, coursTermines);
     
@@ -158,10 +140,12 @@ portail.post('/inscription', function(req, res) {
 
 // Gestion POST désinscription page d'accueil
 portail.post('/desinscription', function(req, res) {
-    // Chargement des cours de la database
+    
+	// Chargement des cours de la database
     console.log("Page Desincription : Chargement donnees");
     var coursCourant = databaseHandler.getCoursSession(database);
-    // Appel Fonction du formateur
+    
+	// Appel Fonction du formateur
     console.log("Page Desincription : Appel du formateur");
     var horaireCours = formateurHandler.construirePageDesinscription(coursCourant);
     

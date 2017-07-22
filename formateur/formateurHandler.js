@@ -74,9 +74,9 @@ function construireTableauReleveNotes(coursTermines)
     {
         console.log(coursTermines[cours]);
         resultat += '<tr>';
-        resultat += '<td>' + coursTermines[cours].sigle + '</td>';
-        resultat += '<td>' + coursTermines[cours].titre + '</td>';
-        resultat += '<td>' + coursTermines[cours].credit + '</td>';
+        resultat += '<td>' + coursTermines[cours].code + '</td>';
+        resultat += '<td>' + coursTermines[cours].name + '</td>';
+        resultat += '<td>' + '3' + '</td>';
         resultat += '<td>' + coursTermines[cours].resultat + '</td>';
         resultat += '</tr>';
     }
@@ -102,8 +102,8 @@ function construireTableauFactureCourante(coursCourant)
     for (var cours in coursCourant)
     {
         resultat += '<tr>';
-        resultat += '<td>' + coursCourant[cours].sigle + '</td>';
-        resultat += '<td>' + coursCourant[cours].titre + '</td>';
+        resultat += '<td>' + coursCourant[cours].code + '</td>';
+        resultat += '<td>' + coursCourant[cours].name + '</td>';
         resultat += '<td>' + coursCourant[cours].frais + '</td>';
         resultat += '</tr>';
         total += coursCourant[cours].frais;
@@ -129,8 +129,8 @@ function construireTableauFactureAnterieure(coursAnterieure)
     for (var cours in coursAnterieure)
     {
         resultat += '<tr>';
-        resultat += '<td>' + coursAnterieure[cours].sigle + '</td>';
-        resultat += '<td>' + coursAnterieure[cours].titre + '</td>';
+        resultat += '<td>' + coursAnterieure[cours].code + '</td>';
+        resultat += '<td>' + coursAnterieure[cours].name + '</td>';
         resultat += '<td>' + coursAnterieure[cours].frais + '</td>';
         resultat += '</tr>';
         total += coursAnterieure[cours].frais;
@@ -175,6 +175,7 @@ function construirePageHoraire(coursCourant)
     horaireCours += '</table>';
 
     console.log("FormateurHandler Horaire : done.");
+	
     // Retourne le tableau html généré avec les données de la bd
     return horaireCours;
 }
