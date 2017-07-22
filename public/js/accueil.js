@@ -1,6 +1,10 @@
+
+
 /////////////////////////////////////////////////////////
 // Menu Facture
 /////////////////////////////////////////////////////////
+$(document).ready(function() {
+
 $('#facture').click(function(){  
 	var data = {};
 	$.ajax({
@@ -68,7 +72,65 @@ $('#inscription').click(function(){
 		console.error(err);
 	});
 });     
-   
+	
+$(document).on("change", ".selectCoursAFaire", function() {
+	var choix = this.options[this.selectedIndex];
+	var groupes = this.options[this.selectedIndex].getAttribute('data-groupe').split(' ');
+	var option = "";
+	for( var i = 0; i < groupes.length; ++i ) {
+		option += '<option>'+groupes[i]+'</option>'
+	}
+	var selectGroup = $(this).closest('td').next('td').find('select');
+	selectGroup.html(option);
+	selectGroup.prop("disabled", false);
+	if ( $('#inscriptionCours tr').length <= 5)
+		generateNewInscriptionList(this.options, choix);
+});
+
+
+function generateNewInscriptionList(list, exclude) {
+	var horaireCours = '<tr><td><select class="selectCoursAFaire">' ;
+    for (var cours in list)
+    {
+    	if( list[cours].value && list[cours].value != exclude.value ) {
+	        horaireCours += '<option data-groupe="' + list[cours].getAttribute('data-groupe') +'">' + list[cours].value + '</option>';
+    	}    
+    }
+    horaireCours += '</select></td>';
+    horaireCours += '<td><select disabled id="selectGroupeCoursAFaire"></select></td>'
+    horaireCours += '</tr>';
+	$('#inscriptionCours tr:last').after(horaireCours);
+}
+
+$(document).on('click','#validerInscription', function(){
+	var cours = $('#inscriptionCours tr');
+	var horaire = "";
+	var result = '<h3>Les cours suivants ont &eacute;t&eacute; ajout&eacute; &agrave; l\'horaire</h3>';
+	result += '<table class=\"cours\">';
+    result += '<tr><th>Sigle</th><th>Groupe</th><th>Horaire</th></tr>';
+	for(var i = 1; i < cours.length; ++i ) {
+		var selectCours = cours[i].firstChild.firstChild;
+		var selectGroupe = cours[i].childNodes[1].firstChild;
+		var selectedCours = selectCours[selectCours.selectedIndex];
+		var selectedGroupe = selectGroupe[selectGroupe.selectedIndex];
+		if( selectedCours.value !== "Selection") {
+
+			result += '<tr><td>' + selectedCours.value + '</td><td>'+ selectGroupe.value + '</td><td>' + getHoraire(selectGroupe.value) + '</td></tr>';
+		}
+	}
+	
+    result += '</table>';
+	$('#body-page').html(result);
+
+});
+
+function getHoraire( groupe ) {
+	var jour = ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi"];
+	var periode = ["9h00 - 12h00", "13h30 - 16h30", "18h00 - 21h00"];
+	var result = jour[ Math.floor(groupe/10)-1];
+	result += " " + periode[groupe%10];
+	return result; 
+}
 /////////////////////////////////////////////////////////
 // Menu désinscription
 /////////////////////////////////////////////////////////
@@ -165,7 +227,7 @@ $(document).on("click", ".cheminementCell a", function() {
 
 });
 
-$(document).on("click", "select", function() {
+$(document).on("click", ".selectCoursChoix", function() {
 	var cell = $(this).parent();
 	var e = document.getElementById("coursAu" + cell.attr("id"));
 	var choix = e.options[e.selectedIndex].value;
@@ -245,3 +307,4 @@ function showLegend() {
 function hideLegend() {
 	$('#rightBar').html('');
 }
+});

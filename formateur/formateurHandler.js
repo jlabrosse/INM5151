@@ -1,3 +1,7 @@
+var fs = require('fs');
+var databaseHandler = require('../database/dataBaseHandler.js'); 
+var database = JSON.parse(fs.readFileSync('./database/database.json'));
+
 //////////////////////////////////////////////////
 // Construction tableau cheminement
 //////////////////////////////////////////////////
@@ -34,7 +38,7 @@ function construireTableauCheminement(databaseCours, database)
                 + databaseCours[i].code + '</br><span class="cheminementName">'
                 + databaseCours[i].name + '</span></a>';
         if (databaseCours[i].code.match(/Choix./)) {
-            resultat += '<select id=\"coursAu' + databaseCours[i].code + '\">' + listChoix + '</select>';
+            resultat += '<select class="selectCoursChoix" id=\"coursAu' + databaseCours[i].code + '\">' + listChoix + '</select>';
         }
         resultat += '</td>';
         ++j;
@@ -185,49 +189,52 @@ function construirePageHoraire(coursCourant)
 //////////////////////////////////////////////////
 function construirePageInscription(coursCourant, coursFutures, coursTermines)
 {
-    var horaireCours = '<h2>Faire son inscription</h2>';
-    // Texte sur date limite d'inscription
-    horaireCours += '<div>Date limite: La date limite d\'inscription';
-    horaireCours += ' pour la session Automne 2017';
-    horaireCours += ' est le 27 juin 2017</div>';
-    // Tableau -(Affiche horaire actuelle)
-    horaireCours += '<h3>Mon horaire</h3>';
-    horaireCours += '<table class=\"cours\">';
-    horaireCours += '<col width="75"><col width="200"><col width="75">';
-    horaireCours += '<tr><th>Sigle</th><th>Titre</th><th>Labo</th><th>Professeur</th>'
-    horaireCours += '<th>Local</th><th>Groupe</th><th>Période</th></tr>';
+    // var horaireCours = '<h2>Faire son inscription</h2>';
+    // // Texte sur date limite d'inscription
+    // horaireCours += '<div>Date limite: La date limite d\'inscription';
+    // horaireCours += ' pour la session Automne 2017';
+    // horaireCours += ' est le 27 juin 2017</div>';
+    // // Tableau -(Affiche horaire actuelle)
+    // horaireCours += '<h3>Mon horaire</h3>';
+    // horaireCours += '<table class=\"cours\">';
+    // horaireCours += '<col width="75"><col width="200"><col width="75">';
+    // horaireCours += '<tr><th>Sigle</th><th>Titre</th><th>Labo</th><th>Professeur</th>'
+    // horaireCours += '<th>Local</th><th>Groupe</th><th>Période</th></tr>';
 
-    for (var cours in coursCourant)
-    {
-        var boolLabo = 'Non';
-        if( coursCourant[cours].labo !== null ){
-            boolLabo = 'Oui';
-        }
+    // for (var cours in coursCourant)
+    // {
+    //     var boolLabo = 'Non';
+    //     if( coursCourant[cours].labo !== null ){
+    //         boolLabo = 'Oui';
+    //     }
         
-        horaireCours += '<tr>';
-        horaireCours += '<td>' + coursCourant[cours].code + '</td>';
-        horaireCours += '<td>' + coursCourant[cours].name + '</td>';
-        horaireCours += '<td>' + boolLabo + '</td>';
-        horaireCours += '<td>' + coursCourant[cours].professeur + '</td>';
-        horaireCours += '<td>' + coursCourant[cours].local + '</td>';
-        horaireCours += '<td>' + coursCourant[cours].groupe + '</td>';
-        horaireCours += '<td>' + coursCourant[cours].periode + '</td>';
-        horaireCours += '</tr>';
-    }
+    //     horaireCours += '<tr>';
+    //     horaireCours += '<td>' + coursCourant[cours].code + '</td>';
+    //     horaireCours += '<td>' + coursCourant[cours].name + '</td>';
+    //     horaireCours += '<td>' + boolLabo + '</td>';
+    //     horaireCours += '<td>' + coursCourant[cours].professeur + '</td>';
+    //     horaireCours += '<td>' + coursCourant[cours].local + '</td>';
+    //     horaireCours += '<td>' + coursCourant[cours].groupe + '</td>';
+    //     horaireCours += '<td>' + coursCourant[cours].periode + '</td>';
+    //     horaireCours += '</tr>';
+    // }
+    var horaireCours = "";
     horaireCours += '</table>';
     // Tableau Faire inscription
     horaireCours += '<h3>S\'inscrire</h3>';
-    horaireCours += '<table class=\"cours\">';
+    horaireCours += '<table id="inscriptionCours" class=\"cours\">';
     horaireCours += '<tr><th>Sigle</th><th>Groupe</th><th></th></tr>';
-    horaireCours += '<tr><td><select>' ;
+    horaireCours += '<tr><td><select class="selectCoursAFaire">' ;
+    horaireCours += '<option>Selection</option>' ;
     for (var cours in coursFutures)
     {       
-        horaireCours += '<option>' + coursFutures[cours].code + '</option>';
+        if(coursFutures[cours].code !== "Langue" && coursFutures[cours].code !== "Compl." && !coursFutures[cours].code.match(/Choix/))
+            horaireCours += '<option data-groupe="' + coursFutures[cours].groupe+'">' + coursFutures[cours].code + '</option>';
     }
     horaireCours += '</select></td>';
-    horaireCours += '<td><select disabled></select></td>'
-    horaireCours += '<td><button type="button" onclick=validerInscription();" >Soumettre</button>'
-horaireCours += '</tr>';
+    horaireCours += '<td><select disabled id="selectGroupeCoursAFaire"></select></td>'
+    horaireCours += '<td><button type="button" id="validerInscription">Soumettre</button>'
+    horaireCours += '</tr></table>';
 
     
     console.log("FormateurHandler Inscription : done.");
