@@ -95,7 +95,8 @@ $(document).on("change", ".selectCoursAFaire", function() {
 	var selectGroup = $(this).closest('td').next('td').find('select');
 	selectGroup.html(option);
 	selectGroup.prop("disabled", false);
-	if ( $('#inscriptionCours tr').length <= 5 )
+	var row = $(this).parent().parent();
+	if ( $('#inscriptionCours tr').length <= 5 && row.is('tr:last'))
 		generateNewInscriptionList(this.options, choix);
 });
 
