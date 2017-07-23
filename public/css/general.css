@@ -33,6 +33,7 @@ body {
 }
 
 .body-page {
+  font-family: 'Cabin', sans-serif;
 	overflow-y: auto;
 	text-align: center; 
 	height: 80%;
@@ -42,6 +43,7 @@ body {
     top: 15%;
     left: 15%;
     background-color: #fcfcfa;
+  color: #337bae;
 }
 
 .footer {

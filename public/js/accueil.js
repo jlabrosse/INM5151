@@ -72,7 +72,19 @@ $('#inscription').click(function(){
 		console.error(err);
 	});
 });     
-	
+
+// Selection d'une session genere la liste d'inscription
+$(document).on("change", "#selectSession", function() {
+	var choix = this.options[this.selectedIndex];
+	if(choix.value !== "----") {
+		$('#inscriptionCours').css('display', 'block');
+		$('#selectSessionHeader').css('display', 'none');
+		$(this).css('display', 'none');
+	}
+
+});
+
+// Selection d'un cours a inscrire, genere une nouvelle liste d'inscription
 $(document).on("change", ".selectCoursAFaire", function() {
 	var choix = this.options[this.selectedIndex];
 	var groupes = this.options[this.selectedIndex].getAttribute('data-groupe').split(' ');
@@ -83,7 +95,7 @@ $(document).on("change", ".selectCoursAFaire", function() {
 	var selectGroup = $(this).closest('td').next('td').find('select');
 	selectGroup.html(option);
 	selectGroup.prop("disabled", false);
-	if ( $('#inscriptionCours tr').length <= 5)
+	if ( $('#inscriptionCours tr').length <= 5 )
 		generateNewInscriptionList(this.options, choix);
 });
 
@@ -102,27 +114,71 @@ function generateNewInscriptionList(list, exclude) {
 	$('#inscriptionCours tr:last').after(horaireCours);
 }
 
+// Click sur le bouton soumettre valide les conflits d'horaire seulement et genere un tableau resultat
 $(document).on('click','#validerInscription', function(){
-	var cours = $('#inscriptionCours tr');
-	var horaire = "";
-	var result = '<h3>Les cours suivants ont &eacute;t&eacute; ajout&eacute; &agrave; l\'horaire</h3>';
-	result += '<table class=\"cours\">';
-    result += '<tr><th>Sigle</th><th>Groupe</th><th>Horaire</th></tr>';
-	for(var i = 1; i < cours.length; ++i ) {
-		var selectCours = cours[i].firstChild.firstChild;
-		var selectGroupe = cours[i].childNodes[1].firstChild;
+	var row = $('#inscriptionCours tr');
+	var groupes = [];
+	var sigles = [];
+	var horaires = [];
+	for(var i = 1; i < row.length; ++i ) {
+		var selectCours = row[i].firstChild.firstChild;
+		var selectGroupe = row[i].childNodes[1].firstChild;
 		var selectedCours = selectCours[selectCours.selectedIndex];
 		var selectedGroupe = selectGroupe[selectGroupe.selectedIndex];
 		if( selectedCours.value !== "Selection") {
+			groupes.push(selectGroupe.value);
+			sigles.push(selectedCours.value);
+			horaires.push(getHoraire(selectedGroupe.value));
 
-			result += '<tr><td>' + selectedCours.value + '</td><td>'+ selectGroupe.value + '</td><td>' + getHoraire(selectGroupe.value) + '</td></tr>';
 		}
 	}
+	var valide = validateHoraire(groupes, sigles, horaires);
+	var result = '<h3>' + getHeader(valide) + '</h3>';
+	result += '<table class=\"cours\">';
+    result += '<tr><th>Sigle</th><th>Groupe</th><th>Horaire</th></tr>';
+    for( var i = 0; i < groupes.length; ++i ) {
+		result += '<tr><td>' + sigles[i] + '</td><td>'+ groupes[i] + '</td><td>' + horaires[i] + '</td></tr>';
+    }
 	
     result += '</table>';
 	$('#body-page').html(result);
 
 });
+
+function validateHoraire( groupes, sigles, horaires, ) {
+	var conflitG = [];
+	var conflitS = [];
+	var conflitH = [];
+	for( var i = 0; i< horaires.length; ++ i ) {
+		for( var j = i+1; j< horaires.length; ++j ) {
+			if( horaires[i] === horaires[j] ) {
+				if( conflitG.indexOf(sigles[i]) === -1 ) {
+					conflitG.push(groupes[i]);
+					conflitS.push(sigles[i]);
+					conflitH.push(horaires[i]);
+				}
+				if( conflitG.indexOf(sigles[j]) === -1 ) {
+					conflitG.push(groupes[j]);
+					conflitS.push(sigles[j]);
+					conflitH.push(horaires[j]);
+				}
+			}
+		}
+	}
+	if( conflitG.length !== 0 ) {
+		groupes = conflitG;
+		sigles = conflitS;
+		horaires = conflitH;
+		return false;
+	}
+	return true;
+}
+
+function getHeader( valide ) {
+	if( valide ) 
+		return 'Les cours suivant ont &eacute;t&eacute; ajout&eacute;s &agrave; l\'horaire';
+	return 'Conflit d\'horaire entre les cours suivant';
+}
 
 function getHoraire( groupe ) {
 	var jour = ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi"];

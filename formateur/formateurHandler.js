@@ -223,11 +223,13 @@ function construirePageInscription(coursCourant, coursFutures, coursTermines)
     //     horaireCours += '<td>' + coursCourant[cours].periode + '</td>';
     //     horaireCours += '</tr>';
     // }
-    var horaireCours = "";
-    horaireCours += '</table>';
+
+    // horaireCours += '</table>';
     // Tableau Faire inscription
-    horaireCours += '<h3>S\'inscrire</h3>';
-    horaireCours += '<table id="inscriptionCours" class=\"cours\">';
+    var horaireCours = '<h3>S\'inscrire</h3>';
+    horaireCours += '<h3 id="selectSessionHeader">Selectionnez une session</h3>';
+    horaireCours += '<select id="selectSession"><option>----</option><option>A2018</option><option>H2018</option><option>E2019</option></select>';
+    horaireCours += '<table id="inscriptionCours" class=\"cours\" style="display: none;">';
     horaireCours += '<tr><th>Sigle</th><th>Groupe</th><th></th></tr>';
     horaireCours += '<tr><td><select class="selectCoursAFaire">' ;
     horaireCours += '<option>Selection</option>' ;
