@@ -28,11 +28,9 @@ portail.use(bodyParser.json());
 
 
 /////////////////////////////////////
-// Bases de données
+// Imports des modules spécialisés
 /////////////////////////////////////
 var databaseHandler = require(portail.get('database') + '/dataBaseHandler.js'); 
-var database = JSON.parse(fs.readFileSync(portail.get('database') + '/database.json'));
-var databaseCours = JSON.parse(fs.readFileSync(portail.get('database') + '/databaseCours.json'));
 var formateurHandler = require(portail.get('formateur') + '/formateurHandler.js');
 
 
@@ -94,8 +92,8 @@ portail.post('/connexion', function(req, res) {
 portail.post('/facture', function(req, res) {
     console.log("Start - POST - facture.");
 
-    var coursTermines = databaseHandler.getCoursTermines(database);
-    var coursActuel = databaseHandler.getCoursSession(database);
+    var coursTermines = databaseHandler.getCoursTermines();
+    var coursActuel = databaseHandler.getCoursSession();
     var resultat = formateurHandler.construirePageFactures(coursActuel, coursTermines);
 
     res.set({ 'content-type': 'application/json; charset=utf-8' });
@@ -108,7 +106,7 @@ portail.post('/horaire', function(req, res) {
     
 	// Chargement des cours de la database
     console.log("Page Horaire : Chargement donnees");
-    var coursCourant = databaseHandler.getCoursSession(database);
+    var coursCourant = databaseHandler.getCoursSession();
 	
     // Appel Fonction du formateur
     console.log("Page Horaire : Appel du formateur");
@@ -125,13 +123,13 @@ portail.post('/inscription', function(req, res) {
     
 	// Chargement des cours de la database
     console.log("Page Inscription : Chargement donnees");
-    var coursCourant = databaseHandler.getCoursSession(database);
-    var coursFutures = databaseHandler.getCoursACompleter(database);
-    var coursTermines = databaseHandler.getCoursTermines(database);
+    var coursCourant = databaseHandler.getCoursSession();
+    var coursFuturs = databaseHandler.getCoursACompleter();
+    var coursTermines = databaseHandler.getCoursTermines();
     
 	// Appel Fonction du formateur
     console.log("Page Inscription : Appel du formateur");
-    var horaireCours = formateurHandler.construirePageInscription(coursCourant, coursFutures, coursTermines);
+    var horaireCours = formateurHandler.construirePageInscription(coursCourant, coursFuturs, coursTermines);
     
     console.log("Page Inscription : Done");
     res.json({statut: "succes", contenu: horaireCours});
@@ -143,7 +141,7 @@ portail.post('/desinscription', function(req, res) {
     
 	// Chargement des cours de la database
     console.log("Page Desincription : Chargement donnees");
-    var coursCourant = databaseHandler.getCoursSession(database);
+    var coursCourant = databaseHandler.getCoursSession();
     
 	// Appel Fonction du formateur
     console.log("Page Desincription : Appel du formateur");
@@ -158,7 +156,7 @@ portail.post('/desinscription', function(req, res) {
 portail.post('/relevedenotes', function(req, res) 
 {   
     // Récupération des données
-	var coursTermines = databaseHandler.getCoursTermines(database);
+	var coursTermines = databaseHandler.getCoursTermines();
 	
 	// Construction du tableau html correspondant    
     var resultat = formateurHandler.construireTableauReleveNotes(coursTermines);
@@ -172,6 +170,9 @@ portail.post('/relevedenotes', function(req, res)
 // Gestion POST cheminement page d'accueil
 portail.post('/cheminement', function(req, res) {
 	
+	var databaseCours = databaseHandler.getDatabaseCours();
+	var database = databaseHandler.getDatabase();
+	
 	// Construction du tableau de cheminement
 	var resultat = formateurHandler.construireTableauCheminement(databaseCours, database);
 	
@@ -179,7 +180,6 @@ portail.post('/cheminement', function(req, res) {
     res.set({ 'content-type': 'application/json; charset=utf-8' });
     res.json({statut: "succes", contenu: resultat});
 });
-
 
 
 //////////////////////////////////////////////////////////

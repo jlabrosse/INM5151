@@ -1,41 +1,57 @@
+var fs = require('fs');
+var databaseHandler = require('../database/dataBaseHandler.js'); 
+var database = JSON.parse(fs.readFileSync('./database/database.json'));
+var databaseCours = JSON.parse(fs.readFileSync('./database/databaseCours.json'));
+
+
 //////////////////////////////////////////////////
 // Informations étudiant
 //////////////////////////////////////////////////
-function getNom(db)
+function getDatabase()
 {
-	var etudiant = db['etudiant'];
+	return database;
+}
+
+function getDatabaseCours()
+{
+	return databaseCours;
+}
+
+function getNom()
+{
+	var etudiant = database['etudiant'];
 	return etudiant['nom'];
 }
 
-function getPrenom(db)
+function getPrenom()
 {
-	var etudiant = db['etudiant'];
+	var etudiant = database['etudiant'];
 	return etudiant['prenom'];
 }
 
-function getCodePermanent(db)
+function getCodePermanent()
 {
-	var etudiant = db['etudiant'];
+	var etudiant = database['etudiant'];
 	return etudiant['codePermanent'];
 }
 
-function getCodeProgramme(db)
+function getCodeProgramme()
 {
-	var etudiant = db['etudiant'];
+	var etudiant = database['etudiant'];
 	var programme = etudiant['programme'];
 	return programme.codeProgramme;
 }
 
-function getTitreProgramme(db)
+function getTitreProgramme()
 {
-	var etudiant = db['etudiant'];
+	var etudiant = database['etudiant'];
 	var programme = etudiant['programme'];
 	return programme['titre'];
 }
 
-function getTotalCreditProgramme(db)
+function getTotalCreditProgramme()
 {
-	var etudiant = db['etudiant'];
+	var etudiant = database['etudiant'];
 	var programme = etudiant['programme'];
 	return programme['totalCredit'];
 }
@@ -44,9 +60,9 @@ function getTotalCreditProgramme(db)
 //////////////////////////////////////////////////
 // Cours terminés
 //////////////////////////////////////////////////
-function getCoursTermines(db)
+function getCoursTermines()
 {
-	var etudiant = db['etudiant'];
+	var etudiant = database['etudiant'];
 	var programme = etudiant['programme'];
 	var coursTermines = programme['coursTermines'];
 	
@@ -57,9 +73,9 @@ function getCoursTermines(db)
 //////////////////////////////////////////////////
 // Cours à compléter
 //////////////////////////////////////////////////
-function getCoursACompleter(db)
+function getCoursACompleter()
 {
-	var etudiant = db['etudiant'];
+	var etudiant = database['etudiant'];
 	var programme = etudiant['programme'];
 	var coursACompleter = programme['coursACompletes'];
 	
@@ -70,18 +86,18 @@ function getCoursACompleter(db)
 //////////////////////////////////////////////////
 // Cours session
 //////////////////////////////////////////////////
-function ajouterCoursSession(db, cours)
+function ajouterCoursSession(cours)
 {
-	var etudiant = db['etudiant'];
+	var etudiant = database['etudiant'];
 	var programme = etudiant['programme'];
 	var sessionEnCours = programme['sessionEnCours'];
 	
 	sessionEnCours.push(cours);
 }
 
-function supprimerCoursSession(db, sigle)
+function supprimerCoursSession(sigle)
 {
-	var etudiant = db['etudiant'];
+	var etudiant = database['etudiant'];
 	var programme = etudiant['programme'];
 	var coursSession = programme['sessionEnCours'];
 	
@@ -92,9 +108,9 @@ function supprimerCoursSession(db, sigle)
 	}
 }
 
-function getCoursSession(db)
+function getCoursSession()
 {
-	var etudiant = db['etudiant'];
+	var etudiant = database['etudiant'];
 	var programme = etudiant['programme'];
 	var coursSession = programme['sessionEnCours'];
 	
@@ -105,9 +121,9 @@ function getCoursSession(db)
 //////////////////////////////////////////////////
 // Affiche DB dans console
 //////////////////////////////////////////////////
-function afficherDB(db)
+function afficherDB()
 {
-	var etudiant = db['etudiant'];
+	var etudiant = database['etudiant'];
 	console.log('Prenom: ' + etudiant['prenom']);
 	console.log('Nom: ' + etudiant['nom']);
 	console.log('Code permanent: ' + etudiant['codePermanent']);
@@ -160,40 +176,46 @@ function afficherDB(db)
 //////////////////////////////////////////////////
 module.exports = 
 {
-	getNom: function(db) {
-		return getNom(db);
+	getDatabase: function() {
+		return getDatabase();
 	},
-	getPrenom: function(db) {
-		return getPrenom(db);
+	getDatabaseCours: function() {
+		return getDatabaseCours();
 	},
-	getCodePermanent: function(db) {
-		return getCodePermanent(db);
+	getNom: function() {
+		return getNom();
 	},
-	getCodeProgramme: function(db) {
-		return getCodeProgramme(db);
+	getPrenom: function() {
+		return getPrenom();
 	},
-	getTitreProgramme: function(db) {
-		return getTitreProgramme(db);
+	getCodePermanent: function() {
+		return getCodePermanent();
 	},
-	getTotalCreditProgramme: function(db) {
-		return getTotalCreditProgramme(db);
+	getCodeProgramme: function() {
+		return getCodeProgramme();
 	},
-	getCoursTermines: function(db) {
-		return getCoursTermines(db);
+	getTitreProgramme: function() {
+		return getTitreProgramme();
 	},
-	getCoursACompleter: function(db) {
-		return getCoursACompleter(db);
+	getTotalCreditProgramme: function() {
+		return getTotalCreditProgramme();
 	},
-	ajouterCoursSession: function(db, data) {
-		ajouterCoursSession(db, data);
+	getCoursTermines: function() {
+		return getCoursTermines();
 	},
-	supprimerCoursSession: function(db, data) {
-		supprimerCoursSession(db, data);
+	getCoursACompleter: function() {
+		return getCoursACompleter();
 	},
-	getCoursSession : function(db) {
-		return getCoursSession(db);
+	ajouterCoursSession: function(data) {
+		ajouterCoursSession(data);
 	},
-	afficherDB: function(db) {
-		afficherDB(db);
+	supprimerCoursSession: function(data) {
+		supprimerCoursSession(data);
+	},
+	getCoursSession : function() {
+		return getCoursSession();
+	},
+	afficherDB: function() {
+		afficherDB();
 	}	
 }

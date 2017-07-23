@@ -1,6 +1,4 @@
-var fs = require('fs');
 var databaseHandler = require('../database/dataBaseHandler.js'); 
-var database = JSON.parse(fs.readFileSync('./database/database.json'));
 
 //////////////////////////////////////////////////
 // Construction tableau cheminement
@@ -14,7 +12,8 @@ function construireTableauCheminement(databaseCours, database)
             '<option>INF5071</option>' +
             '<option>INF5171</option>';
 
-	var resultat = '<table class=\"cheminement\">';
+	var resultat = '<h2>Cheminement</h2>';
+	resultat += '<table class=\"cheminement\">';
     resultat += '<col width="20%"><col width="20%"><col width="20%"><col width="20%"><col width="20%">';
     var i;
     var j = 0;
@@ -71,8 +70,8 @@ function construireTableauReleveNotes(coursTermines)
 {
     var resultat = '<h2>Relevé de notes</h2>';
 	resultat += '<div style=\' display: flex; width: 100%; text-align: center; \'>';
-	resultat += '<div style=\' margin-left: 2%; width: 15%; background-color: #39E85C; border: 5px solid rgb(0, 78, 103); border-radius: 25px; padding: 0px; \'> <h3 style=\' color: rgb(51, 123, 174); \'> Crédits validés </h3> <h2> ' + coursTermines.length * 3 + ' </h2> </div>';
-	resultat += '<div style=\' margin-left: 2%; width: 15%; background-color: lightgrey; border: 5px solid rgb(0, 78, 103); border-radius: 25px; padding: 0px;\'> <h3 style=\' color: rgb(51, 123, 174); \'> Total </h3> <h2> ' + databaseHandler.getTotalCreditProgramme(database) + ' </h2> </div> </div>';
+	resultat += '<div style=\' margin-left: 34%; width: 15%; background-color: #39E85C; border: 5px solid rgb(0, 78, 103); border-radius: 25px; padding: 0px; \'> <h3 style=\' color: rgb(51, 123, 174); \'> Crédits validés </h3> <h2> ' + coursTermines.length * 3 + ' </h2> </div>';
+	resultat += '<div style=\' margin-left: 2%; width: 15%; background-color: lightgrey; border: 5px solid rgb(0, 78, 103); border-radius: 25px; padding: 0px;\'> <h3 style=\' color: rgb(51, 123, 174); \'> Total </h3> <h2> ' + databaseHandler.getTotalCreditProgramme() + ' </h2> </div> </div>';
 	resultat += '</div>';
 	resultat += '<p></p>';
     resultat += '<table class=\"notes\">';
@@ -81,7 +80,6 @@ function construireTableauReleveNotes(coursTermines)
 
     for (var cours in coursTermines)
     {
-        console.log(coursTermines[cours]);
         resultat += '<tr>';
         resultat += '<td>' + coursTermines[cours].code + '</td>';
         resultat += '<td>' + coursTermines[cours].name + '</td>';
@@ -148,7 +146,7 @@ function construireTableauFactureAnterieure(coursAnterieure)
 
     resultat += '<tfoot><th style="text-align:left" colspan="2">Total :</th><td>' + total + '</td></tfoot></table>'
 
-    return '<h2>Facture anterieure</h2>' + resultat;
+    return '<h2>Facture antérieure</h2>' + resultat;
 }
 
 //////////////////////////////////////////////////
@@ -159,7 +157,7 @@ function construirePageHoraire(coursCourant)
     var horaireCours = '<h2>Horaire Session Courante</h2>';
 
     // Tableau Horaire
-    horaireCours += '<table class=\"cours\">';
+    horaireCours += '<table class=\"notes\">';
     horaireCours += '<col width="75"><col width="200"><col width="75">';
     horaireCours += '<tr><th>Sigle</th><th>Titre</th><th>Labo</th><th>Professeur</th>'
     horaireCours += '<th>Local</th><th>Groupe</th><th>Période</th></tr>';
@@ -194,42 +192,11 @@ function construirePageHoraire(coursCourant)
 //////////////////////////////////////////////////
 function construirePageInscription(coursCourant, coursFutures, coursTermines)
 {
-    // var horaireCours = '<h2>Faire son inscription</h2>';
-    // // Texte sur date limite d'inscription
-    // horaireCours += '<div>Date limite: La date limite d\'inscription';
-    // horaireCours += ' pour la session Automne 2017';
-    // horaireCours += ' est le 27 juin 2017</div>';
-    // // Tableau -(Affiche horaire actuelle)
-    // horaireCours += '<h3>Mon horaire</h3>';
-    // horaireCours += '<table class=\"cours\">';
-    // horaireCours += '<col width="75"><col width="200"><col width="75">';
-    // horaireCours += '<tr><th>Sigle</th><th>Titre</th><th>Labo</th><th>Professeur</th>'
-    // horaireCours += '<th>Local</th><th>Groupe</th><th>Période</th></tr>';
-
-    // for (var cours in coursCourant)
-    // {
-    //     var boolLabo = 'Non';
-    //     if( coursCourant[cours].labo !== null ){
-    //         boolLabo = 'Oui';
-    //     }
-        
-    //     horaireCours += '<tr>';
-    //     horaireCours += '<td>' + coursCourant[cours].code + '</td>';
-    //     horaireCours += '<td>' + coursCourant[cours].name + '</td>';
-    //     horaireCours += '<td>' + boolLabo + '</td>';
-    //     horaireCours += '<td>' + coursCourant[cours].professeur + '</td>';
-    //     horaireCours += '<td>' + coursCourant[cours].local + '</td>';
-    //     horaireCours += '<td>' + coursCourant[cours].groupe + '</td>';
-    //     horaireCours += '<td>' + coursCourant[cours].periode + '</td>';
-    //     horaireCours += '</tr>';
-    // }
-
-    // horaireCours += '</table>';
     // Tableau Faire inscription
     var horaireCours = '<h3>S\'inscrire</h3>';
     horaireCours += '<h3 id="selectSessionHeader">Selectionnez une session</h3>';
     horaireCours += '<select id="selectSession"><option>----</option><option>A2018</option><option>H2018</option><option>E2019</option></select>';
-    horaireCours += '<table id="inscriptionCours" class=\"cours\" style="display: none;">';
+    horaireCours += '<table id="inscriptionCours" class=\"cours2\" style="display: none;">';
     horaireCours += '<tr><th>Sigle</th><th>Groupe</th><th></th></tr>';
     horaireCours += '<tr><td><select class="selectCoursAFaire">' ;
     horaireCours += '<option>Selection</option>' ;
@@ -239,10 +206,10 @@ function construirePageInscription(coursCourant, coursFutures, coursTermines)
             horaireCours += '<option data-groupe="' + coursFutures[cours].groupe+'">' + coursFutures[cours].code + '</option>';
     }
     horaireCours += '</select></td>';
-    horaireCours += '<td><select disabled id="selectGroupeCoursAFaire"></select></td>'
-    horaireCours += '<td><button type="button" id="validerInscription">Soumettre</button>'
-    horaireCours += '</tr></table>';
-
+    horaireCours += '<td><select disabled id="selectGroupeCoursAFaire"></select></td>';
+    horaireCours += '<td><button type="button" id="validerInscription">Soumettre</button>';
+    horaireCours += '</tr>';
+	horaireCours += '</table>';
     
     console.log("FormateurHandler Inscription : done.");
     // Retourne le tableau html généré avec les données de la bd
@@ -258,9 +225,9 @@ function construirePageDesinscription(coursCourant)
     // Texte sur date limite de désinscription
     horaireCours += '<div>Date limite: La date limite de désinscription'
     horaireCours += ' sans pénalités pour la session Été 2017'
-    horaireCours += ' est le 10 juin 2017</div>'
+    horaireCours += ' est le 10 juin 2017<p></p></div>'
     // Tableau desinscription
-    horaireCours += '<table class=\"cours\">';
+    horaireCours += '<table class=\"notes\">';
     horaireCours += '<col width="75"><col width="200"><col width="75">';
     horaireCours += '<tr><th>Supprimer</th><th>Sigle</th><th>Titre</th><th>Labo</th><th>Professeur</th>'
     horaireCours += '<th>Local</th><th>Groupe</th><th>Période</th></tr>';
@@ -306,10 +273,10 @@ function construirePageFactures(coursCourant, coursAnterieure)
     var tabCourant = construireTableauFactureCourante(coursCourant);
     var tabAnterieure = construireTableauFactureAnterieure(coursAnterieure);
 
-    var title = '<div><h1>Facture courante et solde</h1>';
-
-    var resultat = title + tabCourant + tabAnterieure + '</div>';
-
+    //var title = '<div><h1>Facture courante et solde</h1>';
+    //var resultat = title + tabCourant + tabAnterieure + '</div>';
+	var resultat = tabCourant + tabAnterieure;
+	
     console.log("construirePageFactures -- done");
     return resultat;
 }

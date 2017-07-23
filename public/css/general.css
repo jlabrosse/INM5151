@@ -188,8 +188,26 @@ li {
 
 
 .facture, .notes {
+	text-align: center;
 	border-collapse: collapse;
 	width: 60%;
+	margin-left: 20%;
+	margin-bottom: 5%;
+}
+
+.cours {
+	text-align: center;
+	border-collapse: collapse;
+	width: 60%;
+	margin-left: 20%;
+	margin-bottom: 5%;
+}
+
+.cours2 {
+	text-align: center;
+	border-collapse: collapse;
+	width: 60%;
+	margin-left: 32%;
 	margin-bottom: 5%;
 }
 
