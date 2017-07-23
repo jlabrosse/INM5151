@@ -231,3 +231,21 @@ h1, h2 {
 h1 {
 	margin-left: 25%;
 }
+
+select{
+  border: 2px solid #063852;
+  border-radius: 35px;
+  color: #337bae;
+  font-size: 16px;
+  height: 25px;
+  padding-left: 10px;
+  width: 125px;
+}
+
+button{
+  background-color:  #004e67;
+  color: #fcfcfa;
+  height: 30px;
+  border-style: solid;
+  border-radius: 25px;
+}
