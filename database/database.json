@@ -449,7 +449,7 @@
                     "code": "INF3172",
                     "name": "Principes des système d\"exploitation",
                     "statut": "aFaire",
-                    "prealable": "INF3172",
+                    "prealable": "INF2170",
                     "local": "PK-R650",
                     "periode": 1,
                     "professeur": "Jacques Berger",

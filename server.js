@@ -111,7 +111,7 @@ portail.post('/horaire', function(req, res) {
     // Appel Fonction du formateur
     console.log("Page Horaire : Appel du formateur");
     var horaireCours = formateurHandler.construirePageHoraire(coursCourant);
-		
+	console.log(horaireCours);
     console.log("Page Horaire : Done");
 	res.set({ 'content-type': 'application/json; charset=utf-8' });
     res.json({statut: "succes", contenu: horaireCours});

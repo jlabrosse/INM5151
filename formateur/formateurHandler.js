@@ -157,8 +157,7 @@ function construirePageHoraire(coursCourant)
     var horaireCours = '<h2>Horaire Session Courante</h2>';
 
     // Tableau Horaire
-    horaireCours += '<table class=\"notes\">';
-    horaireCours += '<table id="horaireCours" class=\"cours2\" >';
+    horaireCours += '<table class="notes cours2" id="horaireCours">';
     horaireCours += '<col width="75"><col width="200"><col width="75">';
     horaireCours += '<tr><th>Sigle</th><th>Titre</th><th>Labo</th><th>Professeur</th>';
     horaireCours += '<th>Local</th><th>Groupe</th><th>Période</th></tr>';
@@ -181,8 +180,9 @@ function construirePageHoraire(coursCourant)
         horaireCours += '</tr>';
     }
     horaireCours += '</table>';
-
+    console.log(horaireCours);
     console.log("FormateurHandler Horaire : done.");
+    return horaireCours;
 }
 
 //////////////////////////////////////////////////
