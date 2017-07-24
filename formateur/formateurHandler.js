@@ -182,13 +182,9 @@ function construirePageHoraire(coursCourant)
     horaireCours += '</table>';
     console.log(horaireCours);
     console.log("FormateurHandler Horaire : done.");
-<<<<<<< HEAD
-    return horaireCours;
-=======
     // Retourne le tableau html généré avec les données de la bd
     return horaireCours;
     
->>>>>>> 856d4b4e342d832233e160c2dcaa6518b108ff9d
 }
 
 //////////////////////////////////////////////////
