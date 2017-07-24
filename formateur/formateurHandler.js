@@ -191,11 +191,12 @@ function construirePageHoraire(coursCourant)
 function construirePageInscription(coursCourant, coursFutures, coursTermines)
 {
     // Tableau Faire inscription
-    var horaireCours = '<h3>S\'inscrire</h3>';
-    horaireCours += '<h3 id="selectSessionHeader">Selectionnez une session</h3>';
-    horaireCours += '<select id="selectSession"><option>----</option><option>A2018</option><option>H2018</option><option>E2019</option></select>';
-    horaireCours += '<table id="inscriptionCours" class=\"cours2\" style="display: none;">';
-    horaireCours += '<tr><th>Sigle</th><th>Groupe</th><th></th></tr>';
+    var horaireCours = '<h2>Inscription</h2>';
+    horaireCours += '<h3 id="selectSessionHeader" class="selectSessionHeader">Selectionnez une session</h3>';
+    horaireCours += '<select class="selectSession"><option>----</option><option>A2018</option><option>H2018</option><option>E2019</option></select>';
+    horaireCours += '<table id="inscriptionCours" class="cours2 modifHoraire" style="display: none;">';
+    horaireCours += '<col width="20%"><col width="20%"><col width="20%"><col width="20%"><col width="20%">';
+    horaireCours += '<tr><th>Sigle</th><th>Groupe</th><th>Horaire</th><th>Place</th><th></th></tr>';
     horaireCours += '<tr><td><select class="selectCoursAFaire">' ;
     horaireCours += '<option>Selection</option>' ;
     for (var cours in coursFutures)
@@ -204,7 +205,7 @@ function construirePageInscription(coursCourant, coursFutures, coursTermines)
             horaireCours += '<option data-groupe="' + coursFutures[cours].groupe+'">' + coursFutures[cours].code + '</option>';
     }
     horaireCours += '</select></td>';
-    horaireCours += '<td><select disabled id="selectGroupeCoursAFaire"></select></td>';
+    horaireCours += '<td><select disabled id="selectGroupeCoursAFaire"></select></td><td></td><td></td>';
     horaireCours += '<td><button type="button" id="validerInscription">Soumettre</button>';
     horaireCours += '</tr>';
 	horaireCours += '</table>';
@@ -221,14 +222,14 @@ function construirePageDesinscription(coursCourant)
 {
     var horaireCours = '<h2>Désinscription</h2>';
     // Texte sur date limite de désinscription
-    horaireCours += '<h3 id="selectSessionHeaderDes">Selectionnez une session</h3>';
-    horaireCours += '<select id="selectSessionDesinscription"><option>----</option><option>A2018</option><option>H2018</option><option>E2019</option></select>';
-    horaireCours += '<div id="desinscriptionDateLimit" style="display: none;">Date limite: La date limite de désinscription';
+    horaireCours += '<h3 id="selectSessionHeaderDes" class="selectSessionHeader">Selectionnez une session</h3>';
+    horaireCours += '<select id="selectSessionDesinscription" class="selectSession"><option>----</option><option>A2018</option><option>H2018</option><option>E2019</option></select>';
+    horaireCours += '<div id="desinscriptionDateLimit" class="dateLimiteHeader" style="display: none;">Date limite: La date limite de désinscription';
     horaireCours += ' sans pénalités pour la session Été 2017';
     horaireCours += ' est le 10 juin 2017<p></p></div>';
     // Tableau desinscription
-    horaireCours += '<table id="desinscriptionCours" class=\"notes\" style="display: none;">';
-    horaireCours += '<col width="75"><col width="200"><col width="75">';
+    horaireCours += '<table id="desinscriptionCours" class="notes modifHoraire" style="display: none;">';
+    horaireCours += '<col width="75" id="colSupprimer"><col width="200"><col width="75"><col width="75">';
     horaireCours += '<tr><th>Supprimer</th><th>Sigle</th><th>Titre</th><th>Labo</th><th>Professeur</th>';
     horaireCours += '<th>Local</th><th>Groupe</th><th>Période</th></tr>';
 
@@ -242,7 +243,9 @@ function construirePageDesinscription(coursCourant)
         }
         
         horaireCours += '<tr>';       
-        horaireCours += '<td>' + '<button id="buttonDes" type="button">X</button>' + '</td>';
+        // horaireCours += '<td>' + '<button id="buttonDes" type="button">X</button>' + '</td>';
+    horaireCours += '<td>' + '<input id="buttonDes" type="checkbox"></button>' + '</td>';
+
         horaireCours += '<td>' + coursCourant[cours].code + '</td>';
         horaireCours += '<td>' + coursCourant[cours].name + '</td>';
         horaireCours += '<td>' + boolLabo + '</td>';
@@ -254,7 +257,8 @@ function construirePageDesinscription(coursCourant)
         horaireCours += '</tr>';
 	i = i + 1;
     }
-        
+    horaireCours += '<td><button type="button" id="confirmerDesinscription">Soumettre</button>';
+    horaireCours += '</tr>';
     horaireCours += '</table>';
     
     console.log("FormateurHandler Desinscription : done.");
