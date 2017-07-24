@@ -109,15 +109,15 @@ function construireTableauFactureCourante(coursCourant)
     for (var cours in coursCourant)
     {
         resultat += '<tr>';
-        resultat += '<td>' + coursCourant[cours].code + '</td>';
-        resultat += '<td>' + coursCourant[cours].name + '</td>';
-        resultat += '<td>' + coursCourant[cours].frais + '</td>';
+        resultat += '<td>' + coursCourant[cours].code + ' </td>';
+        resultat += '<td>' + coursCourant[cours].name + ' </td>';
+        resultat += '<td>' + coursCourant[cours].frais + ' $</td>';
         resultat += '</tr>';
         total += coursCourant[cours].frais;
     }
     total = Math.round(total * 100) / 100;
 
-    resultat += '<tfoot><th style="text-align:left" colspan="2">Total :</th><td>' + total + '</td></tfoot></table>';
+    resultat += '<tfoot><th style="text-align:left" colspan="2">Total :</th><td>' + total + ' $</td></tfoot></table>';
 
     return '<h2>Facture courante</h2>' + resultat;
 }
@@ -136,15 +136,15 @@ function construireTableauFactureAnterieure(coursAnterieure)
     for (var cours in coursAnterieure)
     {
         resultat += '<tr>';
-        resultat += '<td>' + coursAnterieure[cours].code + '</td>';
-        resultat += '<td>' + coursAnterieure[cours].name + '</td>';
-        resultat += '<td>' + coursAnterieure[cours].frais + '</td>';
+        resultat += '<td>' + coursAnterieure[cours].code + ' </td>';
+        resultat += '<td>' + coursAnterieure[cours].name + ' </td>';
+        resultat += '<td>' + coursAnterieure[cours].frais + ' $</td>';
         resultat += '</tr>';
         total += coursAnterieure[cours].frais;
     }
     total = Math.round(total * 100) / 100;
 
-    resultat += '<tfoot><th style="text-align:left" colspan="2">Total :</th><td>' + total + '</td></tfoot></table>';
+    resultat += '<tfoot><th style="text-align:left" colspan="2">Total :</th><td>' + total + ' $</td></tfoot></table>';
 
     return '<h2>Facture antérieure</h2>' + resultat;
 }
