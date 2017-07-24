@@ -257,7 +257,7 @@ function construirePageDesinscription(coursCourant)
         horaireCours += '</tr>';
 	i = i + 1;
     }
-    horaireCours += '<td><button type="button" id="confirmerDesinscription">Soumettre</button>';
+    horaireCours += '<td colspan="8" style="text-align:left;"><button type="button" id="confirmerDesinscription">Soumettre</button></td>';
     horaireCours += '</tr>';
     horaireCours += '</table>';
     

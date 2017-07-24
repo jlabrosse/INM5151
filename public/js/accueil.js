@@ -121,7 +121,7 @@ function generateNewInscriptionList(list, exclude) {
     	}    
     }
     horaireCours += '</select></td>';
-    horaireCours += '<td><select disabled id="selectGroupeCoursAFaire"></select></td><td></td><td></td>'
+    horaireCours += '<td><select disabled id="selectGroupeCoursAFaire"></select></td><td></td><td></td><td></td>'
     horaireCours += '</tr>';
 	$('#inscriptionCours tr:last').after(horaireCours);
 }
@@ -242,7 +242,7 @@ $(document).on('click', '#confirmerDesinscription', function() {
 	if( checkedRows.length > 0 ) {
 		if(confirm("Voulez-vous vraiment annuler les cours" + sigles.toString() + "?")) {
 			$('#desinscriptionCours tr th:first-child').css('display', 'none');
-			for( var i = 0; i < checkboxRows.length-1; ++i) {
+			for( var i = 0; i < checkboxRows.length; ++i) {
 				$(checkboxRows).css('display', 'none');
 			}
 			for( var i = 0; i < checkedRows.length; ++i) {
