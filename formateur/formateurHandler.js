@@ -111,11 +111,11 @@ function construireTableauFactureCourante(coursCourant)
         resultat += '<tr>';
         resultat += '<td>' + coursCourant[cours].code + ' </td>';
         resultat += '<td>' + coursCourant[cours].name + ' </td>';
-        resultat += '<td>' + coursCourant[cours].frais + ' $</td>';
+        resultat += '<td>' + coursCourant[cours].frais.toFixed(2) + ' $</td>';
         resultat += '</tr>';
         total += coursCourant[cours].frais;
     }
-    total = Math.round(total * 100) / 100;
+    total = Math.round(total).toFixed(2);
 
     resultat += '<tfoot><th style="text-align:left" colspan="2">Total :</th><td>' + total + ' $</td></tfoot></table>';
 
@@ -138,11 +138,11 @@ function construireTableauFactureAnterieure(coursAnterieure)
         resultat += '<tr>';
         resultat += '<td>' + coursAnterieure[cours].code + ' </td>';
         resultat += '<td>' + coursAnterieure[cours].name + ' </td>';
-        resultat += '<td>' + coursAnterieure[cours].frais + ' $</td>';
+        resultat += '<td>' + coursAnterieure[cours].frais.toFixed(2) + ' $</td>';
         resultat += '</tr>';
         total += coursAnterieure[cours].frais;
     }
-    total = Math.round(total * 100) / 100;
+    total = Math.round(total).toFixed(2);
 
     resultat += '<tfoot><th style="text-align:left" colspan="2">Total :</th><td>' + total + ' $</td></tfoot></table>';
 
@@ -182,7 +182,13 @@ function construirePageHoraire(coursCourant)
     horaireCours += '</table>';
     console.log(horaireCours);
     console.log("FormateurHandler Horaire : done.");
+<<<<<<< HEAD
     return horaireCours;
+=======
+    // Retourne le tableau html généré avec les données de la bd
+    return horaireCours;
+    
+>>>>>>> 856d4b4e342d832233e160c2dcaa6518b108ff9d
 }
 
 //////////////////////////////////////////////////

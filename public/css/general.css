@@ -202,6 +202,11 @@ li {
 	margin-bottom: 5%;
 }
 
+.facture tfoot td{
+    background-color: #004e67;
+    color: #fcfcfa;
+}
+
 .cours {
 	text-align: center;
 	border-collapse: collapse;
