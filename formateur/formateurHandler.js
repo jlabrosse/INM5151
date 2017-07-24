@@ -117,7 +117,7 @@ function construireTableauFactureCourante(coursCourant)
     }
     total = Math.round(total * 100) / 100;
 
-    resultat += '<tfoot><th style="text-align:left" colspan="2">Total :</th><td>' + total + '</td></tfoot></table>'
+    resultat += '<tfoot><th style="text-align:left" colspan="2">Total :</th><td>' + total + '</td></tfoot></table>';
 
     return '<h2>Facture courante</h2>' + resultat;
 }
@@ -144,7 +144,7 @@ function construireTableauFactureAnterieure(coursAnterieure)
     }
     total = Math.round(total * 100) / 100;
 
-    resultat += '<tfoot><th style="text-align:left" colspan="2">Total :</th><td>' + total + '</td></tfoot></table>'
+    resultat += '<tfoot><th style="text-align:left" colspan="2">Total :</th><td>' + total + '</td></tfoot></table>';
 
     return '<h2>Facture antérieure</h2>' + resultat;
 }
@@ -158,8 +158,9 @@ function construirePageHoraire(coursCourant)
 
     // Tableau Horaire
     horaireCours += '<table class=\"notes\">';
+    horaireCours += '<table id="horaireCours" class=\"cours2\" >';
     horaireCours += '<col width="75"><col width="200"><col width="75">';
-    horaireCours += '<tr><th>Sigle</th><th>Titre</th><th>Labo</th><th>Professeur</th>'
+    horaireCours += '<tr><th>Sigle</th><th>Titre</th><th>Labo</th><th>Professeur</th>';
     horaireCours += '<th>Local</th><th>Groupe</th><th>Période</th></tr>';
     
     for (var cours in coursCourant)
@@ -182,9 +183,6 @@ function construirePageHoraire(coursCourant)
     horaireCours += '</table>';
 
     console.log("FormateurHandler Horaire : done.");
-	
-    // Retourne le tableau html généré avec les données de la bd
-    return horaireCours;
 }
 
 //////////////////////////////////////////////////
@@ -223,25 +221,28 @@ function construirePageDesinscription(coursCourant)
 {
     var horaireCours = '<h2>Désinscription</h2>';
     // Texte sur date limite de désinscription
-    horaireCours += '<div>Date limite: La date limite de désinscription'
-    horaireCours += ' sans pénalités pour la session Été 2017'
-    horaireCours += ' est le 10 juin 2017<p></p></div>'
+    horaireCours += '<h3 id="selectSessionHeaderDes">Selectionnez une session</h3>';
+    horaireCours += '<select id="selectSessionDesinscription"><option>----</option><option>A2018</option><option>H2018</option><option>E2019</option></select>';
+    horaireCours += '<div id="desinscriptionDateLimit" style="display: none;">Date limite: La date limite de désinscription';
+    horaireCours += ' sans pénalités pour la session Été 2017';
+    horaireCours += ' est le 10 juin 2017<p></p></div>';
     // Tableau desinscription
-    horaireCours += '<table class=\"notes\">';
+    horaireCours += '<table id="desinscriptionCours" class=\"notes\" style="display: none;">';
     horaireCours += '<col width="75"><col width="200"><col width="75">';
-    horaireCours += '<tr><th>Supprimer</th><th>Sigle</th><th>Titre</th><th>Labo</th><th>Professeur</th>'
+    horaireCours += '<tr><th>Supprimer</th><th>Sigle</th><th>Titre</th><th>Labo</th><th>Professeur</th>';
     horaireCours += '<th>Local</th><th>Groupe</th><th>Période</th></tr>';
 
+    var i = 1;
     for (var cours in coursCourant)
     {
+	
         var boolLabo = 'Non';
         if( coursCourant[cours].labo !== null ){
             boolLabo = 'Oui';
         }
         
-        horaireCours += '<tr>';
-        
-        horaireCours += '<td>' + '<button type="button" onclick="effacerCours();" >X</button>' + '</td>';
+        horaireCours += '<tr>';       
+        horaireCours += '<td>' + '<button id="buttonDes" type="button">X</button>' + '</td>';
         horaireCours += '<td>' + coursCourant[cours].code + '</td>';
         horaireCours += '<td>' + coursCourant[cours].name + '</td>';
         horaireCours += '<td>' + boolLabo + '</td>';
@@ -251,16 +252,13 @@ function construirePageDesinscription(coursCourant)
         horaireCours += '<td>' + coursCourant[cours].periode + '</td>';
         
         horaireCours += '</tr>';
+	i = i + 1;
     }
         
     horaireCours += '</table>';
     
     console.log("FormateurHandler Desinscription : done.");
     // Retourne le tableau html généré avec les données de la bd
-    return horaireCours;
-}
-
-function effacerCours(){
     return horaireCours;
 }
 
@@ -305,4 +303,4 @@ module.exports =
             construirePageHoraire: function (coursCourant) {
                 return construirePageHoraire(coursCourant);
             }
-        }
+        };
