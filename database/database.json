@@ -17,8 +17,8 @@
                     "periode": 1,
                     "professeur": "Jacques Berger",
                     "groupe": 30,
-                    "frais": 300.00,
-                    "resultat": "A",
+                    "frais": 300.25,
+                    "resultat": "D",
                     "nbrPlaceLibres": 30,
                     "labo": {
                         "demonstrateur": "François Chamberland",
@@ -36,7 +36,7 @@
                     "professeur": "Jacques Berger",
                     "groupe": 30,
                     "frais": 300.00,
-                    "resultat": "A",
+                    "resultat": "A+",
                     "nbrPlaceLibres": 30,
                     "labo": null
                 },
@@ -50,7 +50,7 @@
                     "professeur": "Jacques Berger",
                     "groupe": 30,
                     "frais": 300.00,
-                    "resultat": "A",
+                    "resultat": "A-",
                     "nbrPlaceLibres": 30,
                     "labo": null
                 },
@@ -64,7 +64,7 @@
                     "professeur": "Jacques Berger",
                     "groupe": 30,
                     "frais": 300.00,
-                    "resultat": "A",
+                    "resultat": "C+",
                     "nbrPlaceLibres": 30,
                     "labo": null
                 },
@@ -78,7 +78,7 @@
                     "professeur": "Jacques Berger",
                     "groupe": 30,
                     "frais": 300.00,
-                    "resultat": "A",
+                    "resultat": "B+",
                     "nbrPlaceLibres": 30,
                     "labo": null
                 },
@@ -110,7 +110,7 @@
                     "professeur": "Jacques Berger",
                     "groupe": 30,
                     "frais": 300.00,
-                    "resultat": "A",
+                    "resultat": "A-",
                     "nbrPlaceLibres": 30,
                     "labo": {
                         "demonstrateur": "François Chamberland",
@@ -195,7 +195,7 @@
                     "periode": 1,
                     "professeur": "Jacques Berger",
                     "groupe": 30,
-                    "frais": 300.00,
+                    "frais": 300.99,
                     "resultat": "",
                     "nbrPlaceLibres": 30,
                     "labo": {
@@ -305,7 +305,7 @@
                     "professeur": "Jacques Berger",
                     "groupe": "50 51",
                     "frais": 300.00,
-                    "resultat": "",
+                    "resultat": "B+",
                     "nbrPlaceLibres": 30,
                     "labo": {
                         "demonstrateur": "François Chamberland",
