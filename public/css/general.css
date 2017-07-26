@@ -10,7 +10,7 @@ body {
 
 .header {
 	margin: 0 auto;
-	text-align: center;
+	/*text-align: center;*/
     height: 15%;
     width: 100%;
     position: fixed;
@@ -24,9 +24,8 @@ body {
 
 .header h1 {
 	padding-top: 0.5%;
-    margin-left: 0%;
+    margin-left: 45%;
     color: white;
-	/*padding-bottom: 4%;*/
 }
 
 .header p {
@@ -182,15 +181,15 @@ li {
 }
 
 .complet{
-  background-color: #011a27;
+  background-color: #375e97;
 }
 
 .aFaire{
-  background-color: #f0810f;
+  background-color: #fb6542;
 }
 
 .enCours{
-  background-color: #063852;
+  background-color: #3f681c;
 }
 
 
@@ -200,6 +199,10 @@ li {
 	width: 60%;
 	margin-left: 20%;
 	margin-bottom: 5%;
+}
+
+.facture tfoot tr {
+	border-collapse: collapse;
 }
 
 .facture tfoot td{
@@ -240,9 +243,7 @@ th{
 }
 
 td{
-	border: 1px solid white;
 	border-spacing: 0;
-	border-radius: 5px;
     -moz-border-radius: 5px;
     padding: 5px;
 	font-family: 'Roboto', sans-serif;
@@ -278,4 +279,8 @@ button{
   height: 30px;
   border-style: solid;
   border-radius: 25px;
+}
+
+#deconect {
+	padding-top:100%;
 }
