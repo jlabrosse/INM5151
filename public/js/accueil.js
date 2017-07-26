@@ -306,9 +306,9 @@ $('#cheminement').click(function(){
 // Cheminement : gestion clic cellule tableau
 /////////////////////////////////////////////////////////
 $(document).on("click", ".cheminementCell a", function() {
-	var cells = document.getElementsByClassName("cheminementCell");
+	var cells = $(".cheminementCell");
 	for( var i = 0; i < cells.length; i++ ) {
-		cells[i].style.opacity = .3;
+		cells[i].style.opacity = 0.2;
 	}
 	var cell = $(this).parent();
 	cell.css('opacity', 1);
@@ -341,7 +341,7 @@ function dimPrealablesCell( cell ) {
 			dimPrealablesCell( document.getElementById(prealables[i]));
 		}
 	}
-	cell.style.opacity = .7;
+	cell.style.opacity = .8;
 }
 
 function findPrealableForOption( optionId ) {
