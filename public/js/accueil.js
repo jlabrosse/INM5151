@@ -103,6 +103,13 @@ $(document).on("change", ".selectCoursAFaire", function() {
 		generateNewInscriptionList(this.options, choix);
 });
 
+$(document).on("change", ".selectGroupeCoursAFaire", function() {
+	var selectGroup = $(this).closest('td').find('select');
+	console.log(selectGroup);
+	showHoraire($(selectGroup).val(), this.parentNode.parentNode);
+	showPlace($(selectGroup).val(), this.parentNode.parentNode);
+});
+
 function showPlace( groupe, row ) {
 	var place = Math.floor((Math.random() * 30) + 1);
 	row.cells[3].innerHTML = place;
@@ -121,7 +128,7 @@ function generateNewInscriptionList(list, exclude) {
     	}    
     }
     horaireCours += '</select></td>';
-    horaireCours += '<td><select disabled id="selectGroupeCoursAFaire"></select></td><td></td><td></td><td></td>'
+    horaireCours += '<td><select disabled class="selectGroupeCoursAFaire"></select></td><td></td><td></td><td></td>'
     horaireCours += '</tr>';
 	$('#inscriptionCours tr:last').after(horaireCours);
 }
@@ -146,7 +153,7 @@ $(document).on('click','#validerInscription', function(){
 		}
 	}
 	if( confirm("Voulez-vous ajouter les cours : " + sigles.toString() + " ?") ){
-		var valide = validateHoraire(groupes, sigles, horaires);
+		var [valide, groupes, sigles, horaires] = validateHoraire(groupes, sigles, horaires);
 		var result = '<h3>' + getHeader(valide) + '</h3>';
 		result += '<table class=\"cours\">';
 	    result += '<tr><th>Sigle</th><th>Groupe</th><th>Horaire</th></tr>';
@@ -156,9 +163,7 @@ $(document).on('click','#validerInscription', function(){
 		
 	    result += '</table>';
 		$('#body-page').html(result);
-	} else {
-		alert("cancel");
-	}
+	} 
 });
 
 function validateHoraire( groupes, sigles, horaires, ) {
@@ -168,12 +173,12 @@ function validateHoraire( groupes, sigles, horaires, ) {
 	for( var i = 0; i< horaires.length; ++ i ) {
 		for( var j = i+1; j< horaires.length; ++j ) {
 			if( horaires[i] === horaires[j] ) {
-				if( conflitG.indexOf(sigles[i]) === -1 ) {
+				if( conflitS.indexOf(sigles[i]) === -1 ) {
 					conflitG.push(groupes[i]);
 					conflitS.push(sigles[i]);
 					conflitH.push(horaires[i]);
 				}
-				if( conflitG.indexOf(sigles[j]) === -1 ) {
+				if( conflitS.indexOf(sigles[j]) === -1 ) {
 					conflitG.push(groupes[j]);
 					conflitS.push(sigles[j]);
 					conflitH.push(horaires[j]);
@@ -181,13 +186,10 @@ function validateHoraire( groupes, sigles, horaires, ) {
 			}
 		}
 	}
-	if( conflitG.length !== 0 ) {
-		groupes = conflitG;
-		sigles = conflitS;
-		horaires = conflitH;
-		return false;
+	if( conflitS.length !== 0 ) {
+		return [false, conflitG, conflitS, conflitH];
 	}
-	return true;
+	return [true, groupes,sigles,horaires];
 }
 
 function getHeader( valide ) {

@@ -207,7 +207,7 @@ function construirePageInscription(coursCourant, coursFutures, coursTermines)
             horaireCours += '<option data-groupe="' + coursFutures[cours].groupe+'">' + coursFutures[cours].code + '</option>';
     }
     horaireCours += '</select></td>';
-    horaireCours += '<td><select disabled id="selectGroupeCoursAFaire"></select></td><td></td><td></td>';
+    horaireCours += '<td><select disabled class="selectGroupeCoursAFaire"></select></td><td></td><td></td>';
     horaireCours += '<td><button type="button" id="validerInscription">Soumettre</button>';
     horaireCours += '</tr>';
 	horaireCours += '</table>';
